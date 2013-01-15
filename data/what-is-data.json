@@ -13,6 +13,18 @@
           [{"answer":"Quantitative Data"},
            {"answer":"Continuous Data"},
            {"answer":"Categorical Data","correct":true},
-           {"answer":"Don't Know"}]}
+           {"answer":"Don't Know"}]},
+      {"question":"Size: 187cm",
+        "answers":
+          [{"answer":"Continuous Data","correct":true},
+            {"answer":"Discrete Data"},
+            {"answer":"Qualitative Data"},
+            {"answer":"Categorical Data"}]},
+      {"question":"Year Born: 1963",
+        "answers":
+          [{"answer":"Categorical Data"},
+            {"answer":"Discrete Data","correct":true},
+            {"answer":"Qualitative Data"},
+            {"answer":"Continous Data"}]}
      ]
 }
