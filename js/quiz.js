@@ -2,6 +2,8 @@
 var form="<h3>{{title}}</h3> \
   <p>{{description}}</p> \
   <form> \
+  <label for='name'>Your Name</label>\
+  <input id='name' name='name' >\
   {{{questions}}} \
   <input type='button' value='submit' class='submit' onclick='check()'/>\
   </form> \
@@ -17,7 +19,7 @@ function check() {
     }
     return false;
   }
-  
+  var correct=0;  
   _.each(quiz.questions, function(d,i) {
     var an=$("input:radio[name=q"+i+"]:checked").val();
     var answer=get_right_answer(d.answers);
@@ -25,6 +27,7 @@ function check() {
     var view={"answer":answer}
     if (an===answer) {
       view.status="correct";
+      correct++;
       }
     else {
       view.status="wrong";
@@ -32,6 +35,7 @@ function check() {
     $("#q"+i).append(Mustache.render(
     "<div class='answer {{status}}'>{{answer}}</div>",view))
     })
+    gform(quiz.formkey,$("input#name").val(),correct);
   }
 
 function render_mc_answer(q,id)  {
