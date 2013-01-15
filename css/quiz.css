@@ -23,11 +23,11 @@ ul {
   }
 
 .correct {
-  background: green;
+  background: #55FF55;
   }
 
 .wrong {
-  background: yellow;
+  background: #FFFF55;
   }
 
 .question {
