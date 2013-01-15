@@ -56,7 +56,7 @@ function render_question(q,id) {
 
   var view={"question":q.question,
     "id":id};
-  view.answers=_.map(q.answers, function(x) {
+  view.answers=_.map(_.shuffle(q.answers), function(x) {
   return render_mc_answer(x,id);}).join("\n")
   return Mustache.render(tmpl,view);  
   }
@@ -69,7 +69,7 @@ function doquiz() {
     console.log(d);
     var view={"title":d.title,
       "description":d.description};
-    view.questions=_.map(d.questions,render_question).join("\n");  
+    view.questions=_.map(_.shuffle(d.questions),render_question).join("\n");  
     
     $("#form").append(Mustache.render(form,view));
     })
