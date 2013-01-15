@@ -2,11 +2,16 @@
  "title":"What is Data? Quiz",
  "questions":
     [{"question":"Name: Rick Allen",
-      "type":"mc",
       "answers":
         [{"answer":"Quantitative Data"},
          {"answer":"Qualitative Data","correct":true},
          {"answer":"Discrete Data"},
-         {"answer":"Don't Know"}]}
+         {"answer":"Don't Know"}]},
+      {"question":"Role: Drummer",
+        "answers": 
+          [{"answer":"Quantitative Data"},
+           {"answer":"Continuous Data"},
+           {"answer":"Categorical Data","correct":true},
+           {"answer":"Don't Know"}]}
      ]
 }

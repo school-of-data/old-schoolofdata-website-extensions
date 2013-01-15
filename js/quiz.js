@@ -20,16 +20,20 @@ function check() {
   
   _.each(quiz.questions, function(d,i) {
     var an=$("input:radio[name=q"+i+"]:checked").val();
-    console.log(an);
+    var answer=get_right_answer(d.answers);
     $("#q"+i+" .answer").remove();
-    if (an===get_right_answer(d.answers)) {
-      $("#q"+i).append("<div class='answer correct'>correct</div>");
+    var view={"answer":answer}
+    if (an===answer) {
+      view.status="correct";
       }
     else {
-      $("#q"+i).append("<div class='answer wrong'>incorrect</div>");
+      view.status="wrong";
       }
+    $("#q"+i).append(Mustache.render(
+    "<div class='answer {{status}}'>{{answer}}</div>",view))
     })
   }
+
 function render_mc_answer(q,id)  {
   q.aid=Math.floor(Math.random()*10000);
   q.id=id;
