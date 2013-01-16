@@ -69,7 +69,7 @@ function doquiz() {
     console.log(d);
     var view={"title":d.title,
       "description":d.description};
-    view.questions=_.map(_.shuffle(d.questions),render_question).join("\n");  
+    view.questions=_.map(d.questions,render_question).join("\n");  
     
     $("#form").append(Mustache.render(form,view));
     })
