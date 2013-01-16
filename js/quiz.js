@@ -3,7 +3,9 @@ var form="<h3>{{title}}</h3> \
   <p>{{description}}</p> \
   <form> \
   <label for='name'>Your Name</label>\
-  <input id='name' name='name' >\
+  <input id='name' name='name' ><br/>\
+  <label for='email'>Email</label>\
+  <input id='email' name='email' >\
   {{{questions}}} \
   <input type='button' value='submit' class='submit' onclick='check()'/>\
   </form> \
@@ -35,8 +37,18 @@ function check() {
     $("#q"+i).append(Mustache.render(
     "<div class='answer {{status}}'>{{answer}}</div>",view))
     })
-    gform(quiz.formkey,$("input#name").val(),correct);
+    gform(quiz.formkey,$("input#name").val(),$("input#email").val(),correct);
   }
+
+function gform(fk,name,email,val) {
+    gurl="https://docs.google.com/spreadsheet/formResponse?formkey="+ fk +"&ifq"
+    data={"entry.0.single":name,"entry.1.single":val,
+      "entry.2.single":email,
+        "submit":"Submit","pageNumber":0,"backupCache":undefined}
+    $.post(gurl,data,function(d) {
+      console.log("success");
+      });
+    }
 
 function render_mc_answer(q,id)  {
   q.aid=Math.floor(Math.random()*10000);
@@ -76,3 +88,6 @@ function doquiz() {
   }
 
 $(document).ready(doquiz());  
+
+
+
