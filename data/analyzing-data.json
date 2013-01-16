@@ -1,0 +1,28 @@
+{"description": "Answer the following questions to check your data finding skills",
+ "title":"Finding Data Quiz",
+ "formkey":"dGRMWDlzSWxINlpTN1dvZGhXOG5iRVE6MA",
+ "questions":
+    [{"question":"True or False: You can use formulas with data on other sheets",
+      "answers":
+        [{"answer":"True","correct":true},
+         {"answer":"False"}
+         ]},
+    {"question":"True or False: A formula in a spreadsheet starts with $",
+      "answers":
+        [{"answer":"True"},
+         {"answer":"False","correct":true}
+         ]},
+    {"question":"True or False: You can combine multiple formulas in one cell",
+      "answers":
+        [{"answer":"True"},
+         {"answer":"False","correct":true}
+         ]},
+      {"question":"Which of the following is not a spreadsheet formula",
+        "answers":
+          [{"answer":"=MIN"},
+            {"answer":"=MEAN","correct":true},
+            {"answer":"=MAX"},
+            {"answer":"=ABS"}
+            ]}
+     ]
+}
