@@ -21,6 +21,7 @@ function check() {
     }
     return false;
   }
+
   var correct=0;  
   _.each(quiz.questions, function(d,i) {
     var an=$("input:radio[name=q"+i+"]:checked").val();
