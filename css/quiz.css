@@ -7,6 +7,9 @@ body {
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+  background-image: url('beta.png');
+  background-repeat: no-repeat;
+  background-position: top right;
   }
 
 label {

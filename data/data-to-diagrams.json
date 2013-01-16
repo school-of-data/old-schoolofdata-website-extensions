@@ -1,0 +1,30 @@
+{"description": "So how about your data visualization skills? Test them below",
+ "title":"Data to Diagrams Quiz",
+ "formkey":"dEFpTnp3S1RUcm5EYkJxVnptSVJlb3c6MA",
+ "questions":
+    [{"question":"Which chart to choose if you want to compare the interaction between two values?",
+      "answers":
+        [{"answer":"Barplot"},
+         {"answer":"Scatterplot","correct":true},
+         {"answer":"Piechart"},
+         {"answer":"Don't Know"}]},
+      {"question":"What is the best scale for axes",
+        "answers": 
+          [{"answer":"The one showing most contrast"},
+           {"answer":"The one showing least contrast"},
+           {"answer":"Covering 0 - max","correct":true},
+           {"answer":"Don't Know"}]},
+      {"question":"What should you avoid in choropleth maps",
+        "answers":
+          [{"answer":"Red/Green colorscales","correct":true},
+            {"answer":"Clear Labels"},
+            {"answer":"Data with little range"},
+            {"answer":"Distinct Data"}]},
+      {"question":"Which chart to choose if you want to compare values from different categories (e.g 5 countries and their GDP)",
+        "answers":
+          [{"answer":"Linechart"},
+            {"answer":"Barchart","correct":true},
+            {"answer":"Scatterplot"},
+            {"answer":"Don't Know"}]}
+     ]
+}
