@@ -1,0 +1,27 @@
+{"description": "Do you know the basics of telling a story with data? Check below",
+ "title":"Tell me a Story Quiz",
+ "formkey":"dHpibHZ0R3B2UHFQRVRuWE5lMXE5NXc6MA",
+ "questions":
+    [{"question":"True or False? Data alone is enough - We do not have to provide context",
+      "answers":
+        [{"answer":"True"},
+         {"answer":"False","correct":true}
+         ]},
+      {"question":"Which step is not commonly done in answering questions with data",
+        "answers": 
+          [{"answer":"Finding Data"},
+           {"answer":"Analyzing Data"},
+           {"answer":"Visualizing Data"},
+           {"answer":"Chewing Gum and Kick Ass"}]},
+      {"question":"What do you not need to tell a datastory",
+        "answers":
+          [{"answer":"A webserver","correct":true},
+            {"answer":"A Key storyline"},
+            {"answer":"An interesting dataset"},
+            {"answer":"Data supporting the storyline"}]},
+      {"question":"True or False: Data is always numbers.",
+        "answers":
+          [{"answer":"False","correct":true},
+           {"answer":"True"}]}
+     ]
+}

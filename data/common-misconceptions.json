@@ -1,0 +1,29 @@
+{"description": "Can you spot the common misconceptions hidden below..",
+ "title":"Common Misconceptions Quiz",
+ "formkey":"dG4tTURMdjVCQlhlTGhMUFIxQU9Kd3c6MA",
+ "questions":
+    [{"question":"True of False: The aspect ratio (height/width) of a plot changes the perception of the data",
+      "answers":
+        [{"answer":"False"},
+         {"answer":"True","correct":true}
+         ]},
+      {"question":"If a party ot 10% of votes last election and got 15% this election is this:",
+        "answers": 
+          [{"answer":"5% increase"},
+           {"answer":"50% increase"},
+           {"answer":"150% increase"},
+           {"answer":"15% increase"}]},
+      {"question":"When can you use the average?",
+        "answers":
+          [{"answer":"With normally distributed data","correct":true},
+            {"answer":"With discrete data"},
+            {"answer":"All the time"},
+            {"answer":"Don't Know"}]},
+      {"question":"If the median income is 70.000US$",
+        "answers":
+          [{"answer":"The average income is 70.000US$"},
+            {"answer":"50% of people earn 70.000 or less","correct":true},
+            {"answer":"It is half the maximum income"},
+            {"answer":"Don't Know"}]}
+     ]
+}
