@@ -38,7 +38,12 @@ function check() {
     $("#q"+i).append(Mustache.render(
     "<div class='answer {{status}}'>{{answer}}</div>",view))
     })
-    gform(quiz.formkey,$("input#name").val(),$("input#email").val(),correct);
+    var name=$("input#name").val();
+    var email=$("input#email").val();
+    gform(quiz.formkey,name,email,correct); // send to google forms
+    updateCookie("name",name);
+    updateCookie("email",email);
+    updateCookie(document.location.hash,correct);
   }
 
 function gform(fk,name,email,val) {
@@ -49,6 +54,21 @@ function gform(fk,name,email,val) {
     $.post(gurl,data,function(d) {
       });
     }
+
+function getCookie (key) {
+  var c=document.cookie.split('; ');
+  for (i in c) {
+    var kv=c[i].split("=");
+    if (kv[0]===key) {
+      return (kv[1]);
+      }
+    }
+ return (undefined);
+ };
+
+function updateCookie(key, val) {
+  document.cookie=key+'='+val;
+  }
 
 function render_mc_answer(q,id)  {
   q.aid=Math.floor(Math.random()*10000);
@@ -73,6 +93,7 @@ function render_question(q,id) {
   return Mustache.render(tmpl,view);  
   }
 
+
 function doquiz() {
   var data=document.location.hash.substr(1);
   $.getJSON(data,function(d) {
@@ -82,6 +103,16 @@ function doquiz() {
     view.questions=_.map(d.questions,render_question).join("\n");  
     
     $("#form").append(Mustache.render(form,view));
+    _.each(["name","email"],function(d) {
+      if (getCookie(d)) {
+        $("input#"+d).val(getCookie(d));
+        }});
+    if (getCookie(document.location.hash)) {
+      var view={"correct":getCookie(document.location.hash)}
+      $("#form > p").append(Mustache.render(
+        "<div class='correct'>You've already done this quiz and ansered \
+        {{correct}} answers correctly</div>",view))
+      }
     })
   }
 
