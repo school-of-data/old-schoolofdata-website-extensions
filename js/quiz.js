@@ -47,7 +47,6 @@ function gform(fk,name,email,val) {
       "entry.2.single":email,
         "submit":"Submit","pageNumber":0,"backupCache":undefined}
     $.post(gurl,data,function(d) {
-      console.log("success");
       });
     }
 
@@ -76,10 +75,8 @@ function render_question(q,id) {
 
 function doquiz() {
   var data=document.location.hash.substr(1);
-  console.log(data);
   $.getJSON(data,function(d) {
     quiz=d;
-    console.log(d);
     var view={"title":d.title,
       "description":d.description};
     view.questions=_.map(d.questions,render_question).join("\n");  
