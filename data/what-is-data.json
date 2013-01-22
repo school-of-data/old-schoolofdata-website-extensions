@@ -1,4 +1,4 @@
-{"description": "Did you understand the basic data categories?",
+{"description": "Did you understand the basic data categories? What type of data is this?",
  "title":"What is Data? Quiz",
  "formkey":"dERNeWZpN29FOGl2cjNpbG1qQkl0d3c6MA",
  "questions":
@@ -7,13 +7,13 @@
         [{"answer":"Quantitative Data"},
          {"answer":"Qualitative Data","correct":true},
          {"answer":"Discrete Data"},
-         {"answer":"Don't Know"}]},
+         {"answer":"Uhhmm, Apples?"}]},
       {"question":"Role: Drummer",
         "answers": 
           [{"answer":"Quantitative Data"},
            {"answer":"Continuous Data"},
            {"answer":"Categorical Data","correct":true},
-           {"answer":"Don't Know"}]},
+           {"answer":"Apples has to be the right answer!"}]},
       {"question":"Size: 187cm",
         "answers":
           [{"answer":"Continuous Data","correct":true},

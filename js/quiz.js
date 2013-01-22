@@ -74,13 +74,13 @@ function render_mc_answer(q,id)  {
   q.aid=Math.floor(Math.random()*10000);
   q.id=id;
   var tmpl="<li><input type='radio' name='{{id}}' id='{{aid}}' value='{{answer}}'>\
-    <label for='{{aid}}'>{{answer}}</label></li>";
+    <label for='{{aid}}'>{{{answer}}}</label></li>";
   return Mustache.render(tmpl,q);
   }
   
 function render_question(q,id) {
   var id="q"+id;
-  var tmpl="<div class='question' id='{{id}}' >{{question}}\
+  var tmpl="<div class='question' id='{{id}}' >{{{question}}}\
         <ul> \
         {{{answers}}}\
         </ul> \

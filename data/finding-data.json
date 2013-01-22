@@ -12,13 +12,13 @@
           [{"answer":"Freedom of Information Requests","correct":true},
            {"answer":"The yellow press"},
            {"answer":"Press Releases"},
-           {"answer":"Don't Know"}]},
+           {"answer":"The library of the Miskatonic University"}]},
       {"question":"What is a datacatalog?",
         "answers":
           [{"answer":"A serivce collecting datasets","correct":true},
             {"answer":"Software to view data"},
             {"answer":"Online shopping paradise"},
-            {"answer":"Don't Know"}]},
+            {"answer":"Datacatalogs are made of people!"}]},
       {"question":"True or False: Governments are the only institution releasing data",
         "answers":
           [{"answer":"True"},

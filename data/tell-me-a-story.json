@@ -7,7 +7,7 @@
         [{"answer":"True"},
          {"answer":"False","correct":true}
          ]},
-      {"question":"Which step is not commonly done in answering questions with data",
+      {"question":"Which step is <strong>not</strong> commonly done in answering questions with data",
         "answers": 
           [{"answer":"Finding Data"},
            {"answer":"Analyzing Data"},

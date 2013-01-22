@@ -7,10 +7,12 @@
         [{"answer":"True","correct":true},
          {"answer":"False"}
          ]},
-    {"question":"True or False: A formula in a spreadsheet starts with $",
+    {"question":"A formula in a spreadsheet starts with the character",
       "answers":
-        [{"answer":"True"},
-         {"answer":"False","correct":true}
+        [{"answer":"$"},
+         {"answer":"=","correct":true}
+         {"answer":"%"}
+         {"answer":"("}
          ]},
     {"question":"True or False: You can combine multiple formulas in one cell",
       "answers":
