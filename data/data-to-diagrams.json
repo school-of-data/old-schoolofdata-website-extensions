@@ -14,17 +14,16 @@
            {"answer":"The one showing least contrast"},
            {"answer":"Covering 0 - max","correct":true},
            {"answer":"Don't Know"}]},
-      {"question":"What should you avoid in choropleth maps",
-        "answers":
-          [{"answer":"Red/Green colorscales","correct":true},
-            {"answer":"Clear Labels"},
-            {"answer":"Data with little range"},
-            {"answer":"Distinct Data"}]},
-      {"question":"Which chart to choose if you want to compare values from different categories (e.g 5 countries and their GDP)",
-        "answers":
-          [{"answer":"Linechart"},
-            {"answer":"Barchart","correct":true},
-            {"answer":"Scatterplot"},
-            {"answer":"Don't Know"}]}
+     {"question":"Which presentation to choose if your data has a strong georaphical reference?"  ,
+      "answers":
+        [{"answer":"A map","correct":true},
+         {"answer":"Tapdance"},
+         {"answer":"Barchart"},
+         {"answer":"Piechart"}
+        ]},
+     {"question":"True or False: Visualizing data is commonly done in exploring datasets",
+      "answers":
+        [{"answer":"True","correct":true},
+          {"answer":"False"}]}
      ]
 }
