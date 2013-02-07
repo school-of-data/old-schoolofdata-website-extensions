@@ -22,7 +22,7 @@ function check() {
     return false;
   }
 
-  var correct=0;  
+  var correct=0;
   _.each(quiz.questions, function(d,i) {
     var an=$("input:radio[name=q"+i+"]:checked").val();
     var answer=get_right_answer(d.answers);
@@ -40,7 +40,9 @@ function check() {
     })
     var name=$("input#name").val();
     var email=$("input#email").val();
-    gform(quiz.formkey,name,email,correct); // send to google forms
+    sd=JSON.stringify({"answered":$("form").serializeArray(),
+      "quiz":quiz})
+    gform(quiz.formkey,name,email,sd); // send to google forms
     updateCookie("name",name);
     updateCookie("email",email);
     updateCookie(document.location.hash,correct);
