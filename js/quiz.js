@@ -49,7 +49,7 @@ function check() {
   }
 
 function gform(fk,name,email,val) {
-    gurl="https://docs.google.com/spreadsheet/formResponse?formkey="+ fk +"&ifq"
+    gurl="https://docs.google.com/a/okfn.org/spreadsheet/formResponse?formkey="+ fk +"&ifq"
     data={"entry.0.single":name,"entry.1.single":val,
       "entry.2.single":email,
         "submit":"Submit","pageNumber":0,"backupCache":undefined}
