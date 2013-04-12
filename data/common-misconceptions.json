@@ -10,7 +10,7 @@
       {"question":"If a party ot 10% of votes last election and got 15% this election is this:",
         "answers": 
           [{"answer":"5% increase"},
-           {"answer":"50% increase"},
+           {"answer":"50% increase","correct":true},
            {"answer":"150% increase"},
            {"answer":"15% increase"}]},
       {"question":"When can you use the average?",
