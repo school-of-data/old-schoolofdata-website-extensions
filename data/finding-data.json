@@ -15,7 +15,7 @@
            {"answer":"The library of the Miskatonic University"}]},
       {"question":"What is a datacatalog?",
         "answers":
-          [{"answer":"A serivce collecting datasets","correct":true},
+          [{"answer":"A service collecting datasets","correct":true},
             {"answer":"Software to view data"},
             {"answer":"Online shopping paradise"},
             {"answer":"Datacatalogs are made of people!"}]},
