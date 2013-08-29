@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="css/quiz.css" />
+<style>
+.smileys {
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+.content {
+  width: 500px;
+  }
+
+.content h2 {
+  text-align: center;
+  }
+.smileys > img {
+  margin-left: 10px;
+  margin-right: 10px;
+  opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+<div class="content">
+<h2>how did this course make you feel?</h2>
+<div class="smileys">
+<img id="happy" class="smiley" src="img/happy.png">
+<img id="confused" class="smiley" src="img/confused.png">
+<img id="sad" class="smiley" src="img/sad.png">
+</div>
+</div>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+var fk="1MhpOsqgbkFnVDxt0RAftw4hRdTbtXk8VOkYFU9ojnFM"
+
+function gform(fk,course,happyness) {
+    gurl="https://docs.google.com/a/okfn.org/forms/d/"+ fk + "/formResponse"
+    data={"entry.413126078":course,"entry.1617847051":happyness, 
+           "submit":"Submit","pageNumber":0,"backupCache":undefined}
+    $.post(gurl,data,function(d) {
+          });
+                                    }
+
+$(".smiley").on("click", function() {
+    var h=this.id;
+    var c=document.location.hash.replace("#","");
+    $("#"+h).css("opacity",1);
+    gform(fk,c,h);
+    })                                    
+
+
+</script>
+</body>
+</html>
