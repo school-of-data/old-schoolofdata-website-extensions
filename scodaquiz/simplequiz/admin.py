@@ -1,23 +1,27 @@
 from django.contrib import admin
-from simplequiz.models import Quiz,Question,BadgeService,Answer
+from simplequiz.models import *
 
 # Register your models here.
 
 
 class AnswerAdmin(admin.TabularInline):
-  model = Answer
+    model = Answer
+
 
 class QuestionAdmin(admin.ModelAdmin):
-  model=Question
-  inlines = [AnswerAdmin, ]
+    model = Question
+    inlines = [AnswerAdmin, ]
+
 
 class QuestionInline(admin.TabularInline):
-  model=Question
+    model = Question
+
 
 class QuizAdmin(admin.ModelAdmin):
-  model = Quiz
-  inlines = [QuestionInline, ]
+    model = Quiz
+    inlines = [QuestionInline, ]
 
-admin.site.register(Quiz,QuizAdmin)
-admin.site.register(Question,QuestionAdmin)
+
+admin.site.register(Quiz, QuizAdmin)
+admin.site.register(Question, QuestionAdmin)
 admin.site.register(BadgeService)
