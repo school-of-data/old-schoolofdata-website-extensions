@@ -1,0 +1,29 @@
+{% extends "quiz-base.html" %}
+
+{% block "content" %}
+<div id="form">
+<div>
+<h3>{{quiz.name}}</h3>
+<p>
+{{quiz.description}}</p>
+</div>
+<div>
+You answered 
+{{correct}} of {{num_questions}} correctly
+</div>
+{% if assertion %}
+<img src="{{badge.image}}" class="badge" />
+<span class="badge">
+Good news: You just earned the {{badge.name}} Badge!
+<a href="#" onclick="OpenBadges.issue('{{assertion}}')" class="btn
+btn-large">Send to Backpack</a></span>
+{% else %}
+{% if quiz.badge %}
+If you had submitted your email address you could have received a badge!
+{% endif %}
+{% endif %}
+</div>
+{% endblock %}
+{% block "scripts" %}
+<script src="https://backpack.openbadges.org/issuer.js"></script>
+{% endblock %}
