@@ -11,29 +11,38 @@ class BadgeService(models.Model):
         return self.name
 
 
-class Quiz(models.Model):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField()
-    description = models.TextField()
-    badge = models.SlugField()
-    badge_service = models.ForeignKey('BadgeService')
+class Answer(models.Model):
+    answer = models.TextField()
+    question = models.ForeignKey('Question')
+    correct = models.BooleanField()
 
     def __unicode__(self):
-        return self.name
+        return self.answer
 
 
 class Question(models.Model):
     question = models.TextField()
     quiz = models.ForeignKey('Quiz')
 
+    @property
+    def answers(self):
+        return Answer.objects.filter(question=self)
+
     def __unicode__(self):
         return self.question
 
 
-class Answer(models.Model):
-    answer = models.TextField()
-    question = models.ForeignKey('Question')
-    correct = models.BooleanField()
+class Quiz(models.Model):
+    name = models.CharField(max_length=200)
+    slug = models.SlugField()
+    description = models.TextField()
+    badge = models.SlugField()
+    badge_service = models.ForeignKey('BadgeService')
+    min_right = models.IntegerField()
+
+    @property
+    def questions(self):
+        return Question.objects.filter(quiz=self)
 
     def __unicode__(self):
         return self.name

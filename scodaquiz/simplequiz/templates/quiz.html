@@ -1,0 +1,28 @@
+{% extends "quiz-base.html" %}
+{% block "content" %}
+<div id="form">
+<h3>{{quiz.name}}</h3>
+<p>{{quiz.description}}</p>
+<form method="POST">  
+{% csrf_token %}
+<label for="name">Your Name</label>  <input id="name" name="name"><br>  
+<label for="email">Email</label>  <input id="email" name="email">  
+{% if quiz.badge %}
+<span class="badges">badge!</span>
+{% endif %}
+{% for q in quiz.questions %}
+<div class="question" id="question-{{q.id}}">{{q.question}}
+    <ul>         
+        {% for a in q.answers %}
+        <li>
+            <input type="radio" name="{{q.id}}" id="answer-{{a.id}}"
+                value="{{a.id}}">    
+            <label for="answer-{{a.id}}">{{a.answer}}</label>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+<input type="submit" value="submit" class="submit"/>
+</form></div>
+{% endblock %}
