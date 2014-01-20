@@ -25,3 +25,4 @@ class QuizAdmin(admin.ModelAdmin):
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(BadgeService)
+admin.site.register(Submission)

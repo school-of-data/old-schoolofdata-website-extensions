@@ -1,9 +1,10 @@
 import re
+import json
 from django.shortcuts import render_to_response, \
     get_object_or_404
 from django.core.context_processors import csrf
 import okbadger
-from simplequiz.models import Quiz,Answer
+from simplequiz.models import Quiz, Answer, Submission
 
 def start(request):
     data = {}
@@ -37,14 +38,22 @@ def quiz(request,slug):
                 badge = resp["badge"]
             else:
                 assertion = None
+                badge = None
         else:
             assertion = None
-            
+            badge = None
+        
+        s = Submission()
+        s.quiz = q
+        s.email = post['email']
+        s.submission = json.dumps(post)
+        s.correct = percent * 100
+        s.save()
         c = {"keys": answers,
              "correct": correct,
              "num_questions": len(answers),
              "assertion": assertion,
              "quiz": q,
              "badge": badge,
-            } 
+            }
         return render_to_response("quiz-results.html", c) 
