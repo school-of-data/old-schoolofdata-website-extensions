@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
     'simplequiz',
 )
 
@@ -49,9 +50,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'scodaquiz.urls'
+ROOT_URLCONF = 'scodaext.urls'
 
-WSGI_APPLICATION = 'scodaquiz.wsgi.application'
+WSGI_APPLICATION = 'scodaext.wsgi.application'
 
 
 # Database

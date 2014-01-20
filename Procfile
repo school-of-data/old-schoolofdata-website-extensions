@@ -1,1 +1,1 @@
-web: gunicorn scodaquiz.wsgi
+web: gunicorn scodaext.wsgi
