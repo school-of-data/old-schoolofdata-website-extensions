@@ -1,4 +1,4 @@
-# Scoda-Ext
+# School of Data Ext
 
 Extensions for the [School of Data](http://schoolofdata.org)
 
@@ -17,8 +17,51 @@ There are several things you can do to help us grow this project
 * Test and submit issues for bugs you find/features you wish it'd have
 * Help us out and create nice style sheets for the quizzes and feedback
   forms.
-* Bring your Python and [Django](http://djangoproject.org) out and help
+* Bring your Python and [Django](http://djangoproject.com) out and help
   building the plattform.
 * Think of more Quizzes for courses on the [School of Data](http://schoolofdata.org/courses)
+
+## Installing for Development
+
+Scodaext is a python/[Django](http://djangoproject.com) project. To start a
+development you'll need:
+
+* sqlite
+* [Foreman](http://theforeman.org/)
+* virtualenv
+* python2
+
+First create a new virtualenv and activate it
+
+```
+virtualenv venv
+source venv/bin/activate
+```
+
+Then install all dependencies
+
+```
+pip install -r requirements.txt
+```
+
+*NOTE: This also installs psycopg2 to access postgres databases. You might
+want to make sure that the postgres development libraries are on your
+system or manually install all dependencies*
+
+Then initialize the database
+
+```
+DATABASE_URL=sqlite://scodaext.sqlite python manage.py syncdb
+```
+
+Finally run the server
+
+```
+DATABASE_URL=sqlite://scodaext.sqlite foreman start
+```
+
+Point your browser to [localhost:5000](http://localhost:5000) to start off.
+The admin interface is on [/admin](http://localhost:5000/admin), the
+quizzes will be quiz/slug.
 
 
