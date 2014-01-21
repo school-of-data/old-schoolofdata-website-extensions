@@ -1,4 +1,8 @@
 {% extends "quiz-base.html" %}
+{% load rnd %}
+{% block "title" %}
+{{quiz.name}}
+{% endblock %}
 {% block "content" %}
 <div id="form">
 <h3>{{quiz.name}}</h3>
@@ -10,10 +14,10 @@
 {% if quiz.badge %}
 <span class="badges">badge!</span>
 {% endif %}
-{% for q in quiz.questions %}
+{% for q in quiz.questions|shuffle %}
 <div class="question" id="question-{{q.id}}">{{q.question}}
     <ul>         
-        {% for a in q.answers %}
+        {% for a in q.answers|shuffle %}
         <li>
             <input type="radio" name="{{q.id}}" id="answer-{{a.id}}"
                 value="{{a.id}}">    
