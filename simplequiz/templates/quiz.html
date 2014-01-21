@@ -1,12 +1,13 @@
 {% extends "quiz-base.html" %}
 {% load rnd %}
+{% load md %}
 {% block "title" %}
 {{quiz.name}}
 {% endblock %}
 {% block "content" %}
 <div id="form">
 <h3>{{quiz.name}}</h3>
-<p>{{quiz.description}}</p>
+<p>{{quiz.description|markdown}}</p>
 <form method="POST">  
 {% csrf_token %}
 <label for="name">Your Name</label>  <input id="name" name="name"><br>  
@@ -15,7 +16,7 @@
 <span class="badges">badge!</span>
 {% endif %}
 {% for q in quiz.questions|shuffle %}
-<div class="question" id="question-{{q.id}}">{{q.question}}
+<div class="question" id="question-{{q.id}}">{{q.question|markdown}}
     <ul>         
         {% for a in q.answers|shuffle %}
         <li>
