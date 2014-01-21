@@ -8,7 +8,7 @@ def export_to_csv(modeladmin, request, queryset):
     if request.user.is_staff or request.user.is_superuser:
         if queryset.count() > 0:
             # generate response and filename
-            response = HttpResponse(mimetype="text/csv")
+            response = HttpResponse(content_type="text/csv")
             today = datetime.now().strftime("%Y-%M-%d_%H:%M:%S")
             filename = "records-%s.csv" % today
             response["Content-Disposition"] = ('attachment; filename="%s"'
