@@ -1,5 +1,6 @@
 from django.contrib import admin
 from simplequiz.models import *
+from simplequiz.actions import export_to_csv
 
 # Register your models here.
 
@@ -24,7 +25,12 @@ class QuizAdmin(admin.ModelAdmin):
     inlines = [QuestionInline, ]
 
 
+class SubmissionAdmin(admin.ModelAdmin):
+    model = Submission
+    actions = [export_to_csv, ]
+
+
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(BadgeService)
-admin.site.register(Submission)
+admin.site.register(Submission,SubmissionAdmin)
