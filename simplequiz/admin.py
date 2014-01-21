@@ -10,6 +10,8 @@ class AnswerAdmin(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     model = Question
+    list_display = ('question', 'quiz')
+    search_fields = ('question',)
     inlines = [AnswerAdmin, ]
 
 
