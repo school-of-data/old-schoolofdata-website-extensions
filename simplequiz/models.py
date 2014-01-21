@@ -34,11 +34,11 @@ class Question(models.Model):
 
 class Quiz(models.Model):
     name = models.CharField(max_length=200)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     description = models.TextField()
-    badge = models.SlugField()
-    badge_service = models.ForeignKey('BadgeService')
-    min_right = models.IntegerField()
+    badge = models.SlugField(null=True,blank=True)
+    badge_service = models.ForeignKey('BadgeService',null=True,blank=True)
+    min_right = models.IntegerField(default=70,blank=True)
 
     @property
     def questions(self):
