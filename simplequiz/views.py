@@ -20,12 +20,11 @@ def quiz(request,slug):
     if request.method == "POST":
         post = request.POST
         q = get_object_or_404(Quiz,slug=slug)
-        questions = filter(
-            lambda x: re.match("[0-9]+$",x),
-            post.keys()
-            )
-        answers = [Answer.objects.get(id=int(post[i])) 
-                   for i in questions]    
+        questions = q.questions
+        for i in questions:
+            i.correct = Answer.objects.get(question=i, correct=True)
+            i.answered = Answer.objects.get(id=int(post[str(i.id)]))
+        answers = [i.answered for i in questions]    
         correct = sum((i.correct for i in answers))
         percent = correct/len(answers)
         if percent >= q.min_right and post['email']:
@@ -55,5 +54,6 @@ def quiz(request,slug):
              "assertion": assertion,
              "quiz": q,
              "badge": badge,
+             "questions": questions,
             }
         return render_to_response("quiz-results.html", c) 
