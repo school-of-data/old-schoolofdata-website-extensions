@@ -22,6 +22,18 @@ btn-large">Send to Backpack</a></span>
 If you had submitted your email address you could have received a badge!
 {% endif %}
 {% endif %}
+{% for q in questions %}
+<div class="question">
+{{q.question}}
+{% if q.answered == q.correct %}
+<div class="answer correct">{{q.answered}}</div>
+{% else %}
+<div class="answer wrong">Answered: {{q.answered}}<br/>
+Correct: {{q.correct}}
+</div>
+{% endif %}
+</div>
+{% endfor %}
 </div>
 {% endblock %}
 {% block "scripts" %}
