@@ -84,7 +84,3 @@ class Feedback(models.Model):
         null=True,
         blank=True,
         )
-    badge_service = models.ForeignKey(BadgeService,
-                                      null=True,
-                                      blank=True,
-                                      )
