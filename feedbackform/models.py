@@ -5,6 +5,7 @@ from badgeclient.models import BadgeService
 
 
 class Feedback(models.Model):
+    date = models.DateTimeField(auto_now=True)
     event = models.CharField(
         "Which event did you attend?",
         max_length=200,
@@ -28,8 +29,8 @@ class Feedback(models.Model):
         null=True,
         blank=True,
         )
-    worthwile = models.CharField(
-        "It was worthwile for me attending the event",
+    worthwhile = models.CharField(
+        "It was worthwhile for me attending the event",
         max_length=50,
         choices=[(1,"Strongly disagree"),
                  (2,"Disagree"),
@@ -85,9 +86,19 @@ class Feedback(models.Model):
         blank=True,
         )
 
+    def __unicode__(self):
+        return u"%s-%s-%s" % (
+            self.name,
+            self.email,
+            self.date,
+            )
+
 
 class Event(models.Model):
     """ Events for Badging """
     name = models.CharField(max_length=200)
     badge = models.SlugField()
     badge_service = models.ForeignKey(BadgeService)
+
+    def __unicode__(self):
+        return self.name
