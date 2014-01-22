@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+<form method="post">
+<h1>School of Data Event Feedback Form</h1>
+
+<p>Hi there, you’ve just been at a School of Data event – Thank you for
+coming! Now it's your turn: let us know how the event was, is there
+something you wish we did but didn't? Was it helpful, exciting?</p>
+{{ form.non_field_errors }}
+{% csrf_token %}
+<section>
+<h2 class="questiontitle">
+Which event did you attend?
+</h2>
+<span class="explanation">
+E.g. Data expedition on Elections, Data cleaning workshop, etc. If there is
+a Badge for this event you'll be given a specific event name to enter.
+</span>
+{{ form.event }}
+</section>
+<section>
+<h2 class="questiontitle">
+Your Name
+</h2>
+<span class="explanation">
+This is optional but very useful to stay in touch.
+</span>
+{{form.name}}
+</section>
+<section>
+<h2 class="questiontitle">
+Email
+</h2>
+<span class="explanation">
+This is also optional. If the event has a badge and you want to earn it you
+have to give us the email address you use for your <a
+href="http://backpack.openbadges.org" target="_new">Backpack</a>
+</span>
+{{form.email}}
+</section>
+<section>
+<h2 class="questiontitle">
+Nationality
+</h2>
+<span class="explanation">
+</span>
+{{form.nationality}}
+</section>
+<section>
+<h2 class="questiontitle">
+How useful was the event for you?
+</h2>
+<span class="explanation">
+please rate the following statements
+</span>
+<table>
+<thead>
+<th>
+    <td>Strongly Disagree</td>
+    <td>Disagree</td>
+    <td>Neither</td>
+    <td>Agree</td>
+    <td>Strongly Agree</td>
+</th>
+</thead>
+<tbody>
+<tr>
+    <td class="title">It was worthwhile for me attending the event</td>
+    <td><input type="radio" name="worthwhile" value="1" /></td>
+    <td><input type="radio" name="worthwhile" value="2" /></td>
+    <td><input type="radio" name="worthwhile" value="3" /></td>
+    <td><input type="radio" name="worthwhile" value="4" /></td>
+    <td><input type="radio" name="worthwhile" value="5" /></td>
+</tr>
+<tr>
+    <td class="title">I learned something useful</td>
+    <td><input type="radio" name="useful" value="1" /></td>
+    <td><input type="radio" name="useful" value="2" /></td>
+    <td><input type="radio" name="useful" value="3" /></td>
+    <td><input type="radio" name="useful" value="4" /></td>
+    <td><input type="radio" name="useful" value="5" /></td>
+</tr>
+<tr>
+    <td class="title">I feel more empowered to use data effectively</td>
+    <td><input type="radio" name="empowered" value="1" /></td>
+    <td><input type="radio" name="empowered" value="2" /></td>
+    <td><input type="radio" name="empowered" value="3" /></td>
+    <td><input type="radio" name="empowered" value="4" /></td>
+    <td><input type="radio" name="empowered" value="5" /></td>
+</tr>
+<tr>
+    <td class="title">I am likely to organise a similar event in my community</td>
+    <td><input type="radio" name="organise" value="1" /></td>
+    <td><input type="radio" name="organise" value="2" /></td>
+    <td><input type="radio" name="organise" value="3" /></td>
+    <td><input type="radio" name="organise" value="4" /></td>
+    <td><input type="radio" name="organise" value="5" /></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2 class="questiontitle">
+What is the main thing you learned today?
+</h2>
+<span class="explanation">
+</span>
+{{form.learned}}
+</section>
+<section>
+<h2 class="questiontitle">
+What is the main thing we should improve for the next event?
+</h2>
+<span class="explanation">
+Suggestions: think about the topics, pace, length, level
+</span>
+{{form.improve}}
+</section>
+<section>
+<h2 class="questiontitle">
+Leave a brief testimonial to future learners so we can spread the word:
+</h2>
+<span class="explanation">
+</span>
+{{form.testimonial}}
+</section>
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}

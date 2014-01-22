@@ -3,6 +3,12 @@ from badgeclient.models import BadgeService
 
 # Create your models here.
 
+agree_choice = [(1,"Strongly disagree"),
+                (2,"Disagree"),
+                (3,"Neither"),
+                (4,"Agree"),
+                (5,"Strongly Agree"),
+                ]
 
 class Feedback(models.Model):
     date = models.DateTimeField(auto_now=True)
@@ -32,42 +38,22 @@ class Feedback(models.Model):
     worthwhile = models.CharField(
         "It was worthwhile for me attending the event",
         max_length=50,
-        choices=[(1,"Strongly disagree"),
-                 (2,"Disagree"),
-                 (3,"Neither"),
-                 (4,"Agree"),
-                 (5,"Strongly Agree"),
-                 ]
+        choices=agree_choice,
         )
     useful = models.CharField(
         "I learned something useful",
         max_length=50,
-        choices=[(1,"Strongly disagree"),
-                 (2,"Disagree"),
-                 (3,"Neither"),
-                 (4,"Agree"),
-                 (5,"Strongly Agree"),
-                 ]
+        choices=agree_choice,
         )
     empowered = models.CharField(
         "I feel more empowered to use data effectively",
         max_length=50,
-        choices=[(1,"Strongly disagree"),
-                 (2,"Disagree"),
-                 (3,"Neither"),
-                 (4,"Agree"),
-                 (5,"Strongly Agree"),
-                 ]
+        choices=agree_choice,
         )
     organise = models.CharField(
         "I am likely to organise a similar event in my community",
         max_length=50,
-        choices=[(1,"Strongly disagree"),
-                 (2,"Disagree"),
-                 (3,"Neither"),
-                 (4,"Agree"),
-                 (5,"Strongly Agree"),
-                 ]
+        choices=agree_choice,
         )
     learned = models.TextField(
         "What is the main thing you have learned today?",
