@@ -84,3 +84,10 @@ class Feedback(models.Model):
         null=True,
         blank=True,
         )
+
+
+class Event(models.Model):
+    """ Events for Badging """
+    name = models.CharField(max_length=200)
+    badge = models.SlugField()
+    badge_service = models.ForeignKey(BadgeService)
