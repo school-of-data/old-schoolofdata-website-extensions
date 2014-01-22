@@ -30,8 +30,7 @@ def quiz(request,slug):
         if percent >= q.min_right and post['email']:
             "Issue a Badge"
             bs = q.badge_service
-            bc = okbadger.Client(bs.url, bs.app_id, bs.api_key)
-            resp = bc.issue(q.badge, post['email'])
+            resp = bs.issue(q.badge, post['email'])
             if resp["status"] == "success":
                 assertion = resp["assertion"]
                 badge = resp["badge"]

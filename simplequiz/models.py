@@ -1,14 +1,5 @@
 from django.db import models
-
-
-class BadgeService(models.Model):
-    name = models.CharField(max_length=200)
-    url = models.CharField(max_length=500)
-    app_id = models.IntegerField()
-    api_key = models.CharField(max_length=500)
-
-    def __unicode__(self):
-        return self.name
+from badgeclient.models import BadgeService
 
 
 class Answer(models.Model):
@@ -37,7 +28,7 @@ class Quiz(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField()
     badge = models.SlugField(null=True,blank=True)
-    badge_service = models.ForeignKey('BadgeService',null=True,blank=True)
+    badge_service = models.ForeignKey(BadgeService,null=True,blank=True)
     min_right = models.IntegerField(default=70,blank=True)
 
     @property

@@ -38,7 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
+    'badgeclient',
     'simplequiz',
+    'feedbackform',
 )
 
 MIDDLEWARE_CLASSES = (
