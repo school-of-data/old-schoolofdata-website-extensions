@@ -17,6 +17,7 @@ Which event did you attend?
 E.g. Data expedition on Elections, Data cleaning workshop, etc. If there is
 a Badge for this event you'll be given a specific event name to enter.
 </span>
+{{ form.event.errors }}
 {{ form.event }}
 </section>
 <section>
@@ -26,6 +27,7 @@ Your Name
 <span class="explanation">
 This is optional but very useful to stay in touch.
 </span>
+{{form.name.errors}}
 {{form.name}}
 </section>
 <section>
@@ -37,6 +39,7 @@ This is also optional. If the event has a badge and you want to earn it you
 have to give us the email address you use for your <a
 href="http://backpack.openbadges.org" target="_new">Backpack</a>
 </span>
+{{form.email.errors}}
 {{form.email}}
 </section>
 <section>
@@ -45,6 +48,7 @@ Nationality
 </h2>
 <span class="explanation">
 </span>
+{{form.nationality.errors}}
 {{form.nationality}}
 </section>
 <section>
@@ -54,6 +58,10 @@ How useful was the event for you?
 <span class="explanation">
 please rate the following statements
 </span>
+{{form.worthwhile.errors}}
+{{form.useful.errors}}
+{{form.empowered.errors}}
+{{form.organise.errors}}
 <table>
 <thead>
 <tr>
@@ -107,6 +115,7 @@ What is the main thing you learned today?
 </h2>
 <span class="explanation">
 </span>
+{{form.learned.errors}}
 {{form.learned}}
 </section>
 <section>
@@ -116,6 +125,7 @@ What is the main thing we should improve for the next event?
 <span class="explanation">
 Suggestions: think about the topics, pace, length, level
 </span>
+{{form.imporve.errors}}
 {{form.improve}}
 </section>
 <section>
@@ -124,8 +134,10 @@ Leave a brief testimonial to future learners so we can spread the word:
 </h2>
 <span class="explanation">
 </span>
+{{form.testimonial.errors}}
 {{form.testimonial}}
 </section>
 <input type="submit" value="Submit" />
 </form>
+{{form.as_p}}
 {% endblock %}

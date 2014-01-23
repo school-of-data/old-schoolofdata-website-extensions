@@ -3,11 +3,11 @@ from badgeclient.models import BadgeService
 
 # Create your models here.
 
-agree_choice = [(1,"Strongly disagree"),
-                (2,"Disagree"),
-                (3,"Neither"),
-                (4,"Agree"),
-                (5,"Strongly Agree"),
+agree_choice = [("1","Strongly disagree"),
+                ("2","Disagree"),
+                ("3","Neither"),
+                ("4","Agree"),
+                ("5","Strongly Agree"),
                 ]
 
 class Feedback(models.Model):

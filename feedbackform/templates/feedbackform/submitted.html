@@ -8,7 +8,7 @@ You helped us to become a better School of Data</h1>
 <img src="{{badge.image}}" class="badge" />
 <span class="badge">
 Good news: You just earned the {{badge.name}} Badge!
-<a href="#" onclick="OpenBadges.issue('{{assertion}}')" class="btn
+<a href="#" onclick="scoda.issueBadge(this, '{{assertion}}')" class="btn
 btn-large" data-success="Visit your Backpack">Send to Backpack</a></span>
 {% endif %}
 
@@ -16,5 +16,6 @@ btn-large" data-success="Visit your Backpack">Send to Backpack</a></span>
 {% block "scripts" %}
 {% if assertion %}
 <script src="https://backpack.openbadges.org/issuer.js"></script>
+<script src="/static/js/issue.js"></script>
 {% endif %}
 {% endblock %}

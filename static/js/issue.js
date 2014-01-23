@@ -1,7 +1,11 @@
-scoda = scoda || {}
+var scoda = scoda || {}
 
-scoda.issue_badge = function(element, assertion) {
+scoda.issueBadge = function(element, assertion) {
     OpenBadges.issue(assertion, function(e,s) {
-        console.log(this);
-        }
+        var text = element.getAttribute("data-success");
+        element.innerHTML = text;
+        element.setAttribute("href","http://backpack.openbadges.org");
+        element.setAttribute("target","_new");
+        element.setAttribute("onclick","");
+        });
     }
