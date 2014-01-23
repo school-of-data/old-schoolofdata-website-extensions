@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block "content" %}
+<h1>Thanks for submitting the Feedback. 
+You helped us to become a better School of Data</h1>
+
+{% if assertion %}
+<img src="{{badge.image}}" class="badge" />
+<span class="badge">
+Good news: You just earned the {{badge.name}} Badge!
+<a href="#" onclick="OpenBadges.issue('{{assertion}}')" class="btn
+btn-large" data-success="Visit your Backpack">Send to Backpack</a></span>
+{% endif %}
+
+{% endblock %}
+{% block "scripts" %}
+{% if assertion %}
+<script src="https://backpack.openbadges.org/issuer.js"></script>
+{% endif %}
+{% endblock %}

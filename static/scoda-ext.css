@@ -1,8 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
 body {
   font-family: "helvetica neue", "helvetica", "arial", "sans-serif";
   font-size: 16px;
   }
+h1, h2, h3 {
+    font-family: 'PT Sans';
+    }
 #form {
   width: 300px;
   margin-left: auto;
@@ -31,7 +35,7 @@ input.submit {
   }
 
 input#name, input#email {
-  border: 1px solid black;
+  border: 1px solid #666;
   }
 ul {
   list-style: none;
@@ -80,3 +84,58 @@ a.btn {
     padding: 5px;
     display: inline-block;
     }
+
+form {
+    color: #333333;
+    }
+form h1 {
+    font-size: 4em;
+    border-top: 5px solid #333333;
+    border-bottom: 1px solid #333333;
+    }
+form section {
+    border-top: 2px solid #333333;
+    }
+form section h2 {
+    color: #e8280e;
+    margin-bottom: 2px;
+    font-weight: normal;
+    }
+form input {
+    margin-top: 10px;
+    border: 1px solid #666;
+    }
+form section span.explanation {
+    font-size: 80%;
+    display: block;
+    }
+form table {
+    margin-top: 10px;
+    font-size: 80%;
+    border-spacing: 0px;
+    width: 100%;
+    table-layout: fixed;
+    }
+form table tr:nth-child(even) {
+    background: #f2f2f2;
+    }
+form table thead {
+    font-weight: bold;
+    }
+form table td {
+    width: auto;
+    text-align: center;
+    }
+form tr {
+    border-top: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-spacing: 1px;
+    }
+li > input {
+    margin-top: 0px;
+    }
+form textarea {
+    resize: none;
+    width: 100%;
+    }
+
