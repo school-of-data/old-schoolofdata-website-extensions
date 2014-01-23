@@ -10,21 +10,17 @@ def fbform(request):
     if request.method == "POST":
         f = FeedbackForm(request.POST,instance=Feedback())
         if f.is_valid():
-            f.save()
-            try:
-                e = Event.objects.get(
-                    name=request.POST['event'].strip())
-                if request.POST['email']:    
+            i = f.save()
+            c = {}
+            if i.event:
+                e = i.event
+                if i.email and e.badge_service:    
                     r = e.badge_service.issue(
                         e.badge,
-                        request.POST['email']
+                        i.email,
                         )
                     c = {"assertion": r['assertion'],
                          "badge": r['badge'] }
-                else:
-                    c = {}
-            except ObjectDoesNotExist:
-                c = {}
             return render_to_response("feedbackform/submitted.html",c)
         else:
             c = {"form": f}
@@ -32,4 +28,5 @@ def fbform(request):
         c = {"form": FeedbackForm(),
              }
     c.update(csrf(request))
+    c['form'].fields['event'].queryset = Event.objects.filter(active=True)
     return render_to_response("feedbackform/form.html",c)

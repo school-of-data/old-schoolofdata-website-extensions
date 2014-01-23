@@ -12,12 +12,10 @@ agree_choice = [("1","Strongly disagree"),
 
 class Feedback(models.Model):
     date = models.DateTimeField(auto_now=True)
-    event = models.CharField(
-        "Which event did you attend?",
-        max_length=200,
-        null=True,
-        blank=True,
-        )
+    event = models.ForeignKey('Event',
+                              null=True,
+                              blank=True,
+                              )
     name = models.CharField(
         "Your Name",
         max_length=200,
@@ -82,9 +80,10 @@ class Feedback(models.Model):
 
 class Event(models.Model):
     """ Events for Badging """
-    name = models.CharField(max_length=200)
-    badge = models.SlugField()
-    badge_service = models.ForeignKey(BadgeService)
+    name = models.CharField(max_length=200,unique=True)
+    badge = models.SlugField(null=True,blank=True)
+    badge_service = models.ForeignKey(BadgeService,null=True,blank=True)
+    active = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name

@@ -138,4 +138,7 @@ form textarea {
     resize: none;
     width: 100%;
     }
-
+form select {
+    display: inline-block;
+    min-width: 150px;
+    }
