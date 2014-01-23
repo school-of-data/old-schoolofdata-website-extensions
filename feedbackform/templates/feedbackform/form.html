@@ -7,7 +7,9 @@
 <p>Hi there, you’ve just been at a School of Data event – Thank you for
 coming! Now it's your turn: let us know how the event was, is there
 something you wish we did but didn't? Was it helpful, exciting?</p>
+<div class="wrong">
 {{ form.non_field_errors }}
+</div>
 {% csrf_token %}
 <section>
 <h2 class="questiontitle">
@@ -17,7 +19,8 @@ Which event did you attend?
 E.g. Data expedition on Elections, Data cleaning workshop, etc. If there is
 a Badge for this event you'll be given a specific event name to enter.
 </span>
-{{ form.event.errors }}
+<div class="wrong">
+{{ form.event.errors }}</div>
 {{ form.event }}
 </section>
 <section>
@@ -27,7 +30,8 @@ Your Name
 <span class="explanation">
 This is optional but very useful to stay in touch.
 </span>
-{{form.name.errors}}
+<div class="wrong">
+{{form.name.errors}}</div>
 {{form.name}}
 </section>
 <section>
@@ -39,7 +43,9 @@ This is also optional. If the event has a badge and you want to earn it you
 have to give us the email address you use for your <a
 href="http://backpack.openbadges.org" target="_new">Backpack</a>
 </span>
+<div class="wrong">
 {{form.email.errors}}
+</div>
 {{form.email}}
 </section>
 <section>
@@ -48,7 +54,9 @@ Nationality
 </h2>
 <span class="explanation">
 </span>
+<div class="wrong">
 {{form.nationality.errors}}
+</div>
 {{form.nationality}}
 </section>
 <section>
@@ -58,10 +66,6 @@ How useful was the event for you?
 <span class="explanation">
 please rate the following statements
 </span>
-{{form.worthwhile.errors}}
-{{form.useful.errors}}
-{{form.empowered.errors}}
-{{form.organise.errors}}
 <table>
 <thead>
 <tr>
@@ -75,7 +79,9 @@ please rate the following statements
 </thead>
 <tbody>
 <tr>
-    <td class="title">It was worthwhile for me attending the event</td>
+    <td class="title">It was worthwhile for me attending the event
+    <div class="wrong">{{form.worthwhile.errors}}</div>
+    </td>
     <td><input type="radio" name="worthwhile" value="1" /></td>
     <td><input type="radio" name="worthwhile" value="2" /></td>
     <td><input type="radio" name="worthwhile" value="3" /></td>
@@ -83,7 +89,9 @@ please rate the following statements
     <td><input type="radio" name="worthwhile" value="5" /></td>
 </tr>
 <tr>
-    <td class="title">I learned something useful</td>
+    <td class="title">I learned something useful
+    <div class="wrong">{{form.useful.errors}}</div>
+    </td>
     <td><input type="radio" name="useful" value="1" /></td>
     <td><input type="radio" name="useful" value="2" /></td>
     <td><input type="radio" name="useful" value="3" /></td>
@@ -91,7 +99,9 @@ please rate the following statements
     <td><input type="radio" name="useful" value="5" /></td>
 </tr>
 <tr>
-    <td class="title">I feel more empowered to use data effectively</td>
+    <td class="title">I feel more empowered to use data effectively
+    <div class="wrong">{{form.empowered.errors}}</div>
+    </td>
     <td><input type="radio" name="empowered" value="1" /></td>
     <td><input type="radio" name="empowered" value="2" /></td>
     <td><input type="radio" name="empowered" value="3" /></td>
@@ -99,7 +109,9 @@ please rate the following statements
     <td><input type="radio" name="empowered" value="5" /></td>
 </tr>
 <tr>
-    <td class="title">I am likely to organise a similar event in my community</td>
+    <td class="title">I am likely to organise a similar event in my community
+    <div class="wrong">{{form.organise.errors}}</div>
+    </td>
     <td><input type="radio" name="organise" value="1" /></td>
     <td><input type="radio" name="organise" value="2" /></td>
     <td><input type="radio" name="organise" value="3" /></td>
@@ -115,7 +127,9 @@ What is the main thing you learned today?
 </h2>
 <span class="explanation">
 </span>
+<div class="wrong">
 {{form.learned.errors}}
+</div>
 {{form.learned}}
 </section>
 <section>
@@ -125,7 +139,9 @@ What is the main thing we should improve for the next event?
 <span class="explanation">
 Suggestions: think about the topics, pace, length, level
 </span>
+<div class="wrong">
 {{form.imporve.errors}}
+</div>
 {{form.improve}}
 </section>
 <section>
@@ -134,7 +150,9 @@ Leave a brief testimonial to future learners so we can spread the word:
 </h2>
 <span class="explanation">
 </span>
+<div class="wrong">
 {{form.testimonial.errors}}
+</div>
 {{form.testimonial}}
 </section>
 <input type="submit" value="Submit" />
