@@ -16,8 +16,8 @@ You answered
 <img src="{{badge.image}}" class="badge" />
 <span class="badge">
 Good news: You just earned the {{badge.name}} Badge!
-<a href="#" onclick="OpenBadges.issue('{{assertion}}')" class="btn
-btn-large">Send to Backpack</a></span>
+<a href="#" onclick="scoda.issueBadge(this,'{{assertion}}')" class="btn
+btn-large" data-success="Visit your Backpack">Send to Backpack</a></span>
 {% else %}
 {% if quiz.badge %}
 If you had submitted your email address you could have received a badge!
@@ -38,5 +38,8 @@ Correct: {{q.correct}}
 </div>
 {% endblock %}
 {% block "scripts" %}
+{% if assertion %}
 <script src="https://backpack.openbadges.org/issuer.js"></script>
+<script src="/static/js/issue.js"></script>
+{% endif %}
 {% endblock %}
