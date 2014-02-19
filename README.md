@@ -27,7 +27,7 @@ Scodaext is a python/[Django](http://djangoproject.com) project. To start a
 development you'll need:
 
 * sqlite
-* [Foreman](http://theforeman.org/)
+* [Foreman](http://theforeman.org/) or [Honcho](https://github.com/nickstenning/honcho)
 * virtualenv
 * python2
 
@@ -59,6 +59,8 @@ Finally run the server
 ```
 DATABASE_URL=sqlite://scodaext.sqlite foreman start
 ```
+
+In case you use honcho not foreman - replace it
 
 Point your browser to [localhost:5000](http://localhost:5000) to start off.
 The admin interface is on [/admin](http://localhost:5000/admin), the
