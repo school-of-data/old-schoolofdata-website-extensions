@@ -39,12 +39,8 @@ source venv/bin/activate
 Then install all dependencies for development
 
 ```
-pip install -r requirements.txt
+pip install -r requirements.dev.txt
 ```
-
-*NOTE: This also installs psycopg2 to access postgres databases. You might
-want to make sure that the postgres development libraries are on your
-system or manually install all dependencies*
 
 Then initialize the database
 
