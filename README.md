@@ -45,13 +45,14 @@ pip install -r requirements.dev.txt
 Then initialize the database
 
 ```
-DATABASE_URL=sqlite://scodaext.sqlite python manage.py syncdb
+DATABASE_URL=sqlite:///scodaext.sqlite python manage.py syncdb
+DATABASE_URL=sqlite:///scodaext.sqlite python manage.py migrate
 ```
 
 Finally run the server
 
 ```
-DATABASE_URL=sqlite://scodaext.sqlite honcho start
+DATABASE_URL=sqlite:///scodaext.sqlite honcho start
 ```
 
 Point your browser to [localhost:5000](http://localhost:5000) to start off.
