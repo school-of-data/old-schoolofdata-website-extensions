@@ -59,4 +59,10 @@ Point your browser to [localhost:5000](http://localhost:5000) to start off.
 The admin interface is on [/admin](http://localhost:5000/admin), the
 quizzes will be quiz/slug.
 
+## Contact 
 
+Contact us:
+
+* email to schoolofdata@okfn.org
+* join us on IRC: irc.freenode.org \#school-of-data 
+* twitter [@schoolofdata](https://twitter.com/schoolofdata)
