@@ -21,6 +21,8 @@ There are several things you can do to help us grow this project
   building the plattform.
 * Think of more Quizzes for courses on the [School of Data](http://schoolofdata.org/courses)
 
+If you plan on contributing check out the [contribution guidelines](https://github.com/okfn/schoolofdata-ext/blob/master/doc/contribution-guidelines.md)
+
 ## Installing for Development
 
 Scodaext is a python/[Django](http://djangoproject.com) project. To start a
