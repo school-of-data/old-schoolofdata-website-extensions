@@ -1,6 +1,6 @@
 from django.contrib import admin
-from feedbackform.models import Feedback, Event
-from feedbackform.actions import export_to_csv
+from scodaext.apps.feedbackform.models import Feedback, Event
+from scodaext.apps.feedbackform.actions import export_to_csv
 
 # Register your models here.
 

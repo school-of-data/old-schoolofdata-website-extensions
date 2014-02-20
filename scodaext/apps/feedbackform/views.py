@@ -1,8 +1,8 @@
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.core.exceptions import ObjectDoesNotExist
-from feedbackform.models import Feedback, Event
-from feedbackform.forms import FeedbackForm
+from scodaext.apps.feedbackform.models import Feedback, Event
+from scodaext.apps.feedbackform.forms import FeedbackForm
 
 # Create your views here.
 

@@ -4,7 +4,8 @@ from django.shortcuts import render_to_response, \
     get_object_or_404
 from django.core.context_processors import csrf
 import okbadger
-from simplequiz.models import Quiz, Answer, Submission
+from scodaext.apps.simplequiz.models import Quiz, \
+    Answer, Submission
 
 def start(request):
     data = {}

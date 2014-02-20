@@ -1,5 +1,5 @@
 from django.db import models
-from badgeclient.models import BadgeService
+from scodaext.apps.badgeclient.models import BadgeService
 
 
 class Answer(models.Model):

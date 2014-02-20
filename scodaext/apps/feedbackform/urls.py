@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-import feedbackform.views
+import scodaext.apps.feedbackform.views
 
 
 urlpatterns = patterns('',
@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'scodaquiz.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', 'feedbackform.views.fbform'),
+    url(r'^$', 'scodaext.apps.feedbackform.views.fbform'),
 )
 
 

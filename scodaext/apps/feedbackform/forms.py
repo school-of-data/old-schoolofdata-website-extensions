@@ -1,5 +1,5 @@
 from django import forms
-from feedbackform.models import Feedback
+from scodaext.apps.feedbackform.models import Feedback
 
 class FeedbackForm(forms.ModelForm): 
     class Meta:

@@ -38,9 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'badgeclient',
-    'simplequiz',
-    'feedbackform',
+    'scodaext.apps.badgeclient',
+    'scodaext.apps.simplequiz',
+    'scodaext.apps.feedbackform',
 )
 
 MIDDLEWARE_CLASSES = (

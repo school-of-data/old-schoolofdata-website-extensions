@@ -1,6 +1,6 @@
 from django.contrib import admin
-from simplequiz.models import *
-from simplequiz.actions import export_to_csv
+from scodaext.apps.simplequiz.models import *
+from scodaext.apps.simplequiz.actions import export_to_csv
 
 # Register your models here.
 

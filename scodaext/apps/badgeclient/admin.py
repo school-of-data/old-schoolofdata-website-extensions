@@ -1,5 +1,5 @@
 from django.contrib import admin
-from badgeclient.models import BadgeService
+from scodaext.apps.badgeclient.models import BadgeService
 
 # Register your models here.
 
