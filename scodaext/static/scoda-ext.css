@@ -136,7 +136,7 @@ li > input {
     }
 form textarea {
     resize: none;
-    width: 100%;
+    width: 99%;
     }
 form select {
     display: inline-block;
