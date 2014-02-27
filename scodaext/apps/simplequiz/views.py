@@ -27,7 +27,7 @@ def quiz(request,slug):
             i.answered = Answer.objects.get(id=int(post[str(i.id)]))
         answers = [i.answered for i in questions]    
         correct = sum((i.correct for i in answers))
-        percent = correct/len(answers)
+        percent = correct/len(answers) * 100
         if percent >= q.min_right and post['email']:
             "Issue a Badge"
             bs = q.badge_service
@@ -46,7 +46,7 @@ def quiz(request,slug):
         s.quiz = q
         s.email = post['email']
         s.submission = json.dumps(post)
-        s.correct = percent * 100
+        s.correct = percent 
         s.save()
         c = {"keys": answers,
              "correct": correct,
