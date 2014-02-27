@@ -3,6 +3,8 @@ import json
 from django.shortcuts import render_to_response, \
     get_object_or_404
 from django.core.context_processors import csrf
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 import okbadger
 from scodaext.apps.simplequiz.models import Quiz, \
     Answer, Submission
@@ -11,7 +13,7 @@ def start(request):
     data = {}
     return render_to_response("simplequiz/start.html", data)
 
-
+@xframe_options_exempt
 def quiz(request,slug):
     if request.method == "GET":  
         q = get_object_or_404(Quiz,slug=slug)

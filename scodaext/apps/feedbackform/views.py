@@ -1,11 +1,13 @@
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.clickjacking import xframe_options_exempt
 from scodaext.apps.feedbackform.models import Feedback, Event
 from scodaext.apps.feedbackform.forms import FeedbackForm
 
 # Create your views here.
 
+@xframe_options_exempt
 def fbform(request):
     if request.method == "POST":
         f = FeedbackForm(request.POST,instance=Feedback())
