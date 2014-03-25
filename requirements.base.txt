@@ -8,3 +8,4 @@ git+https://github.com/mihi-tr/okbadgerclient.git
 South==0.8.4
 markdown
 django-cms
+django-reversion
