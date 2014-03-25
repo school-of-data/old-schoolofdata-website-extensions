@@ -11,9 +11,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'scodaquiz.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^',include(scodaext.apps.simplequiz.urls)),
+    url(r'^quiz/',include(scodaext.apps.simplequiz.urls)),
     url(r'^feedback/',include(scodaext.apps.feedbackform.urls)),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('cms.urls'))
 )
 
 
