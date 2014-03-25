@@ -7,5 +7,6 @@ wsgiref==0.1.2
 git+https://github.com/mihi-tr/okbadgerclient.git
 South==0.8.4
 markdown
-django-cms
+git+https://github.com/divio/django-cms.git@698fe1cf04308ae3d3577909d8377f314cb6dd87#egg=django-cms
+djangocms-admin-style
 django-reversion

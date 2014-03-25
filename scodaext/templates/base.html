@@ -1,14 +1,20 @@
+{% load cms_tags sekizai_tags %}
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% render_block "css" %}
+<!-- <link rel="stylesheet" href="/static/scoda-ext.css" /> -->
 <title>{% block "title" %}{% endblock %}</title>
 </head>
 <body>
+{% cms_toolbar %}
 <div class="content">
-{% block "content" %}
+{% placeholder base_content %}
+{% block base_content %}
 {% endblock %}
+
 </div>
+{% render_block "js" %}
 {% block "scripts" %}
 {% endblock %}
 </body>
