@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "iframe.html" %}
+{% load sekizai_tags %}
 
 {% block "content" %}
 <div id="form">
@@ -36,10 +37,12 @@ Correct: {{q.correct}}
 </div>
 {% endfor %}
 </div>
-{% endblock %}
-{% block "scripts" %}
+{% addtoblock "js" %}
 {% if assertion %}
 <script src="https://backpack.openbadges.org/issuer.js"></script>
 <script src="/static/js/issue.js"></script>
 {% endif %}
+{% endaddtoblock %}
+
 {% endblock %}
+
