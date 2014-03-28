@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/static/scoda-ext.css" />
 {% render_block "css" %}
-<!-- <link rel="stylesheet" href="/static/scoda-ext.css" /> -->
 <title>{% block "title" %}{% endblock %}</title>
 </head>
 <body>
@@ -11,6 +11,8 @@
 <div class="content">
 {% placeholder base_content %}
 {% block base_content %}
+{% endblock %}
+{% block "content" %}
 {% endblock %}
 </div>
 {% static_placeholder "footer" %}

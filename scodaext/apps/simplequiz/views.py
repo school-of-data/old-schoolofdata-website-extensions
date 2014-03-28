@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, \
     get_object_or_404
 from django.core.context_processors import csrf
 from django.views.decorators.clickjacking import xframe_options_exempt
-from sekizai.context import SekizaiContext as Context
+from django.template.context import RequestContext 
 
 import okbadger
 from scodaext.apps.simplequiz.models import Quiz, \
@@ -12,15 +12,19 @@ from scodaext.apps.simplequiz.models import Quiz, \
 
 def start(request):
     data = {}
-    return render_to_response("simplequiz/start.html", data)
+    return render_to_response("simplequiz/start.html", data,
+                              context_instance=RequestContext(request))
 
 @xframe_options_exempt
 def quiz(request,slug):
     if request.method == "GET":  
         q = get_object_or_404(Quiz,slug=slug)
-        c = {"quiz": q}
+        c = {"quiz": q,
+             }
         c.update(csrf(request))
-        return render_to_response("simplequiz/quiz.html", Context(c))
+        return render_to_response("simplequiz/quiz.html", c,
+                                  context_instance=RequestContext(request))
+
     if request.method == "POST":
         post = request.POST
         q = get_object_or_404(Quiz,slug=slug)
@@ -59,4 +63,5 @@ def quiz(request,slug):
              "badge": badge,
              "questions": questions,
             }
-        return render_to_response("simplequiz/quiz-results.html", Context(c)) 
+        return render_to_response("simplequiz/quiz-results.html", c, 
+                                  context_instance=RequestContext(request))
