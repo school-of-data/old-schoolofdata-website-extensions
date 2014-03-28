@@ -1,5 +1,7 @@
 from django.db import models
+from cms.models import CMSPlugin
 from scodaext.apps.badgeclient.models import BadgeService
+
 
 
 class Answer(models.Model):
@@ -48,3 +50,9 @@ class Submission(models.Model):
 
     def __unicode__(self):
         return "%s-%s" % (self.quiz, self.submitted.isoformat())
+
+class QuizPlugin(CMSPlugin):
+    quiz = models.ForeignKey('Quiz')
+
+    def __unicode__(self):
+        return self.quiz.name

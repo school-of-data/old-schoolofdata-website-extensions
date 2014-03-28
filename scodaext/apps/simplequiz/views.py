@@ -59,4 +59,4 @@ def quiz(request,slug):
              "badge": badge,
              "questions": questions,
             }
-        return render_to_response("simplequiz/quiz-results.html", c) 
+        return render_to_response("simplequiz/quiz-results.html", Context(c)) 
