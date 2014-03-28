@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'reversion',
+    'djangocms_text_ckeditor',
     'cms',  
     'mptt',  
     'menus',  
