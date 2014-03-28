@@ -135,6 +135,6 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder")
 
 CMS_TEMPLATES = (
-    ('template_1.html', 'Template One'),
-    ('template_2.html', 'Template Two'),
+    ('template_1.html', 'Basic Page'),
+    ('frontpage.html', 'Frontpage'),
 )
