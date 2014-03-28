@@ -1,5 +1,30 @@
 {% extends "base.html" %}
 {% load cms_tags %}
+{% load menu_tags %}
+{% block header %}
+<header>
+<div class="navbar">
+<div class="navbar-inner">
+<div class="container">
+<div class="header-text" style="float: left; height: 65px;">
+    <a href="/">
+    <img src="http://schoolofdata.org/files/2013/11/logo-white.png">
+    </a>
+<ul>
+{% show_menu 0 100 0 100 %}
+</ul>
+</div>
+</div>
+</div>
+</div>
+</header>
+{% endblock %}
 {% block footer %}
+<footer>
+<div class="inner">
+<div class="container">
 {% static_placeholder "footer" %}
+</div>
+</div>
+</footer>
 {% endblock %}

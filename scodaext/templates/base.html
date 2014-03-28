@@ -2,16 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/css/fonts/stylesheet.css" />
+<link rel="stylesheet" href="/static/css/style.css" />
 <link rel="stylesheet" href="/static/scoda-ext.css" />
+<link rel="stylesheet" href="/static/css/school.css" />
 {% render_block "css" %}
 <title>{% block "title" %}{% endblock %}</title>
 </head>
 <body>
 {% cms_toolbar %}
-<div class="content">
+{% block header %}
+{% endblock %}
 {% block base_content %}
 {% endblock %}
-</div>
 {% block footer %}
 {% endblock %}
 {% render_block "js" %}
