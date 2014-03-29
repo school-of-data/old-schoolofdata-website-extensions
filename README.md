@@ -1,22 +1,31 @@
 # School of Data Ext
 
-Extensions for the [School of Data](http://schoolofdata.org)
+Building a new [School of Data](http://schoolofdata.org)
 
 ## Introduction
 
-At the School of Data we need quite some extra things: Quizzes that are
-able to issue badges once completed, feedbackforms that do the same etc. 
+The School of Data is a community passionate about data skills - in the
+past we've built most of what we do around wordpress. The recent months and
+our crazy ideas have made us realize: We need a new Software to run this.
+We've settled on Django and Django-cms.
 
-This repository contains a giant django project (together with some
-applications) to do exactly this.
+This repository contains a giant django-cms project (together with some
+applications) to provide a new basis for the School of Data
+
+## Roles and User Stories
+
+We are trying to build a plattform around what we need. For this we've
+started to think about
+[Roles](wiki.okfn.org/Projects/School_of_Data/Website/Roles) and 
+[User Stories](wiki.okfn.org/Projects/School_of_Data/Website/User_Stories).
+Check them out see whether something is missing and add it there!
 
 ## Contributing
 
 There are several things you can do to help us grow this project
 
 * Test and submit issues for bugs you find/features you wish it'd have
-* Help us out and create nice style sheets for the quizzes and feedback
-  forms.
+* Help us out and create nice style sheets and designs
 * Bring your Python and [Django](http://djangoproject.com) out and help
   building the plattform.
 * Think of more Quizzes for courses on the [School of Data](http://schoolofdata.org/courses)
