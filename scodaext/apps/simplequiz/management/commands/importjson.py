@@ -2,7 +2,7 @@ import os.path
 import json
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.text import slugify
-from simplequiz.models import Quiz,Question,Answer
+from scodaext.apps.simplequiz.models import Quiz,Question,Answer
 
 class Command(BaseCommand):
     args="<file1> <file2> ..."
