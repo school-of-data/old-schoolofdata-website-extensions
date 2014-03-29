@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.clickjacking import xframe_options_exempt
+from django.template.context import RequestContext
 from scodaext.apps.feedbackform.models import Feedback, Event
 from scodaext.apps.feedbackform.forms import FeedbackForm
 
@@ -23,7 +24,8 @@ def fbform(request):
                         )
                     c = {"assertion": r['assertion'],
                          "badge": r['badge'] }
-            return render_to_response("feedbackform/submitted.html",c)
+            return render_to_response("feedbackform/submitted.html",c,
+                                      context_instance=RequestContext(request))
         else:
             c = {"form": f}
     else:
@@ -31,4 +33,5 @@ def fbform(request):
              }
     c.update(csrf(request))
     c['form'].fields['event'].queryset = Event.objects.filter(active=True)
-    return render_to_response("feedbackform/form.html",c)
+    return render_to_response("feedbackform/form.html",c,
+                              context_instance=RequestContext(request))

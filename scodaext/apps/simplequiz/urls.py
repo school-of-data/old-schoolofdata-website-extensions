@@ -7,5 +7,5 @@ urlpatterns = patterns(
     # url(r'^$', 'scodaquiz.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', 'scodaext.apps.simplequiz.views.start'),
-    url(r'^quiz/(?P<slug>[-\w]+)/$', 'scodaext.apps.simplequiz.views.quiz'),
+    url(r'^(?P<slug>[-\w]+)/$', 'scodaext.apps.simplequiz.views.quiz'),
 )

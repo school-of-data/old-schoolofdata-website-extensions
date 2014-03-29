@@ -1,15 +1,22 @@
+{% load cms_tags sekizai_tags %}
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/static/scoda-ext.css" />
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/static/css/fonts/stylesheet.css" />
+<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="stylesheet" href="/static/css/school.css" />
+{% render_block "css" %}
 <title>{% block "title" %}{% endblock %}</title>
 </head>
 <body>
-<div class="content">
-{% block "content" %}
+{% cms_toolbar %}
+{% block header %}
 {% endblock %}
-</div>
-{% block "scripts" %}
+{% block base_content %}
 {% endblock %}
+{% block footer %}
+{% endblock %}
+{% render_block "js" %}
 </body>
 </html>

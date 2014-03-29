@@ -1,0 +1,33 @@
+{% extends "with-footer.html" %}
+{% load cms_tags %}
+
+{% block base_content %}
+<div class="home-page">
+<section class="coloured banner">
+<div class="container" >
+<div class="row">
+<div class="span6">
+<div class="well">
+{% placeholder headleft %}
+</div>
+</div>
+<div class="span6">
+<div class="padder">
+{% placeholder headright %}
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="container">
+<div class="row">
+<div class="span4">
+{% placeholder image %}
+</div>
+<div class="span8">
+{% placeholder center %}
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -4,6 +4,11 @@ body {
   font-family: "helvetica neue", "helvetica", "arial", "sans-serif";
   font-size: 16px;
   }
+
+html {
+    padding-bottom: 0px;
+    }
+
 h1, h2, h3 {
     font-family: 'PT Sans';
     }
@@ -27,6 +32,9 @@ span.badges {
 label {
   display: inline-block;
   min-width: 90px;
+  margin: 0px;
+  width: auto;
+  font-size: 16px;
   }
 input.submit {
   display: block;
@@ -92,6 +100,7 @@ form h1 {
     font-size: 4em;
     border-top: 5px solid #333333;
     border-bottom: 1px solid #333333;
+    line-height: normal;
     }
 form section {
     border-top: 2px solid #333333;

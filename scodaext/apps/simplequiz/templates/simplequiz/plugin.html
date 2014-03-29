@@ -1,0 +1,31 @@
+{% load md %}
+{% load rnd %}
+{% load sekizai_tags %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+<div id="form">
+<h3>{{instance.quiz.name}}</h3>
+<p>{{instance.quiz.description|markdown}}</p>
+<form method="POST" action="/quiz/{{instance.quiz.slug}}/">  
+{% csrf_token %}
+<label for="name">Your Name</label>  <input id="name" name="name"><br>  
+<label for="email">Email</label>  <input id="email" name="email">  
+{% if instance.quiz.badge %}
+<span class="badges">badge!</span>
+{% endif %}
+{% for q in instance.quiz.questions|shuffle %}
+<div class="question" id="question-{{q.id}}">{{q.question|markdown}}
+    <ul>         
+        {% for a in q.answers|shuffle %}
+        <li>
+            <input type="radio" name="{{q.id}}" id="answer-{{a.id}}"
+                value="{{a.id}}">    
+            <label for="answer-{{a.id}}">{{a.answer}}</label>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+<input type="submit" value="submit" class="submit"/>
+</form></div>

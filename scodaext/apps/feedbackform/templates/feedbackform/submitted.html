@@ -1,6 +1,11 @@
 {% extends "base.html" %}
+{% load sekizai_tags %}
 
 {% block "content" %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+
 <h1>Thanks for submitting the Feedback. 
 You helped us to become a better School of Data</h1>
 
@@ -12,10 +17,10 @@ Good news: You just earned the {{badge.name}} Badge!
 btn-large" data-success="Visit your Backpack">Send to Backpack</a></span>
 {% endif %}
 
-{% endblock %}
-{% block "scripts" %}
+{% addtoblock "js" %}
 {% if assertion %}
 <script src="https://backpack.openbadges.org/issuer.js"></script>
 <script src="/static/js/issue.js"></script>
 {% endif %}
+{% endaddtoblock %}
 {% endblock %}

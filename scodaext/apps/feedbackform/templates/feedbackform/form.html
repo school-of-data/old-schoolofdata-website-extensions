@@ -1,6 +1,12 @@
-{% extends "base.html" %}
+{% extends "iframe.html" %}
+{% load sekizai_tags %}
 
 {% block "content" %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+
 <form method="post">
 <h1>School of Data Event Feedback Form</h1>
 

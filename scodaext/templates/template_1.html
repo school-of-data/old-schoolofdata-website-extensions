@@ -1,0 +1,7 @@
+{% extends "with-footer.html" %}
+{% load cms_tags %}
+
+{% block base_content %}
+{% placeholder main_content %}
+{% static_placeholder sidebar %}
+{% endblock %}

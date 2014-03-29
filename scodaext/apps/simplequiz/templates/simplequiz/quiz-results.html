@@ -1,6 +1,12 @@
-{% extends "base.html" %}
+{% extends "iframe.html" %}
+{% load sekizai_tags %}
 
 {% block "content" %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+
 <div id="form">
 <div>
 <h3>{{quiz.name}}</h3>
@@ -36,10 +42,12 @@ Correct: {{q.correct}}
 </div>
 {% endfor %}
 </div>
-{% endblock %}
-{% block "scripts" %}
+{% addtoblock "js" %}
 {% if assertion %}
 <script src="https://backpack.openbadges.org/issuer.js"></script>
 <script src="/static/js/issue.js"></script>
 {% endif %}
+{% endaddtoblock %}
+
 {% endblock %}
+

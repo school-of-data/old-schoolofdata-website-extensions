@@ -1,10 +1,16 @@
-{% extends "base.html" %}
+{% extends "iframe.html" %}
 {% load rnd %}
 {% load md %}
+{% load sekizai_tags %}
 {% block "title" %}
 {{quiz.name}}
 {% endblock %}
 {% block "content" %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+
 <div id="form">
 <h3>{{quiz.name}}</h3>
 <p>{{quiz.description|markdown}}</p>
