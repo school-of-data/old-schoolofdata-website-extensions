@@ -2,6 +2,11 @@
 {% load sekizai_tags %}
 
 {% block "content" %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+
 <div id="form">
 <div>
 <h3>{{quiz.name}}</h3>

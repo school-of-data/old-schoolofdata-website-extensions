@@ -1,5 +1,9 @@
 {% load md %}
 {% load rnd %}
+{% load sekizai_tags %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
 <div id="form">
 <h3>{{instance.quiz.name}}</h3>
 <p>{{instance.quiz.description|markdown}}</p>
