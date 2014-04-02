@@ -76,9 +76,10 @@ ul {
 
 img.badge {
     width: 75px;
+    background: none;
     }
 
-span.badge {
+span.badgegained {
     width: 200px;
     vertical-align: top;
     display: inline-block;
