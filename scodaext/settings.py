@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'scodaext.apps.badgeclient',
     'scodaext.apps.simplequiz',
     'scodaext.apps.feedbackform',
+    'scodaext.apps.courses',
 )
 
 MIDDLEWARE_CLASSES = (

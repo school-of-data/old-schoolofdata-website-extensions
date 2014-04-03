@@ -50,9 +50,9 @@ class Module(models.Model):
     description= models.TextField()
     text= models.TextField()
     image_url= models.URLField(blank=True,null=True)
-    level= models.CharField(max_length=10, 
+    level= models.CharField(max_length = 10, 
                             choices = [
-                                     ` ("B","Beginner"),
+                                       ("B","Beginner"),
                                        ("I","Intermediate"),
                                        ("A","Advanced"),
                                        ("D","There be Dragons"),
