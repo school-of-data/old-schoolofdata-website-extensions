@@ -7,14 +7,12 @@ class Course(models.Model):
     name= models.CharField(max_length=1024)
     description= models.TextField()
 
-
     def __unicode__(self):
         return self.name
 
 class Topic(models.Model):
     name= models.CharField(max_length=1024)
     description= models.TextField()
-
 
     def __unicode__(self):
         return self.name
@@ -23,14 +21,12 @@ class Tool(models.Model):
     name= models.CharField(max_length=1024)
     description= models.TextField()
 
-
     def __unicode__(self):
         return self.name
 
 class Tag(models.Model):
     name= models.CharField(max_length=1024)
     description= models.TextField()
-
 
     def __unicode__(self):
         return self.name
@@ -39,7 +35,6 @@ class Audience(models.Model):
     name= models.CharField(max_length=1024)
     description= models.TextField()
 
-
     def __unicode__(self):
         return self.name
 
@@ -47,13 +42,13 @@ class Skill(models.Model):
     name= models.CharField(max_length=1024)
     description= models.TextField()
 
-
     def __unicode__(self):
         return self.name
 
 class Module(models.Model):
     name= models.CharField(max_length=1024)
     description= models.TextField()
+    text= models.TextField()
     image_url= models.URLField(blank=True,null=True)
     level= models.CharField(max_length=10, 
                             choices = [
@@ -70,7 +65,6 @@ class Module(models.Model):
     skill= models.ManyToManyField(Skill, null=True,blank=True)
     completedby= models.ManyToManyField(User, null=True, blank=True)
     
-
 
     def __unicode__(self):
         return self.name
