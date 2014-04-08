@@ -5,12 +5,14 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
     name= models.CharField(max_length=1024)
+    slug= models.SlugField(unique=True)
     description= models.TextField()
 
     def __unicode__(self):
         return self.name
 
 class Topic(models.Model):
+    slug= models.SlugField(unique=True)
     name= models.CharField(max_length=1024)
     description= models.TextField()
 
@@ -19,6 +21,7 @@ class Topic(models.Model):
 
 class Tool(models.Model):
     name= models.CharField(max_length=1024)
+    slug= models.SlugField(unique=True)
     description= models.TextField()
 
     def __unicode__(self):
@@ -26,6 +29,7 @@ class Tool(models.Model):
 
 class Tag(models.Model):
     name= models.CharField(max_length=1024)
+    slug= models.SlugField(unique=True)
     description= models.TextField()
 
     def __unicode__(self):
@@ -33,6 +37,7 @@ class Tag(models.Model):
 
 class Audience(models.Model):
     name= models.CharField(max_length=1024)
+    slug= models.SlugField(unique=True)
     description= models.TextField()
 
     def __unicode__(self):
@@ -40,6 +45,7 @@ class Audience(models.Model):
 
 class Skill(models.Model):
     name= models.CharField(max_length=1024)
+    slug= models.SlugField(unique=True)
     description= models.TextField()
 
     def __unicode__(self):
@@ -47,6 +53,7 @@ class Skill(models.Model):
 
 class Module(models.Model):
     name= models.CharField(max_length=1024)
+    slug= models.SlugField(unique=True)
     description= models.TextField()
     text= models.TextField()
     image_url= models.URLField(blank=True,null=True)
@@ -57,7 +64,6 @@ class Module(models.Model):
                                        ("A","Advanced"),
                                        ("D","There be Dragons"),
                                         ])
-    course= models.ManyToManyField(Course,null=True,blank=True)
     topic= models.ManyToManyField(Topic, null=True,blank=True)
     tool= models.ManyToManyField(Tool, null=True,blank=True)
     tag= models.ManyToManyField(Tag, null=True,blank=True)
@@ -68,3 +74,11 @@ class Module(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class CourseModule(models.Model):
+    course= models.ForeignKey(Course)
+    module= models.ForeignKey(Module)
+    order = models.IntegerField(default=0)
+
+    def __unicode__(self):
+        return "%s - %s"%(self.course.name, self.module.name)
