@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'djangocms_admin_style',  
     'django.contrib.admin',
     'django.contrib.messages',  
+    'hvad',
     'south',
     'scodaext.apps.badgeclient',
     'scodaext.apps.simplequiz',

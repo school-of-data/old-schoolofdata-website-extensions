@@ -1,61 +1,75 @@
 from django.db import models
 from django.contrib.auth.models import User
+from hvad.models import TranslatableModel, TranslatedFields
 
 # Create your models here.
 
-class Course(models.Model):
-    name= models.CharField(max_length=1024)
+class Course(TranslatableModel):
     slug= models.SlugField(unique=True)
-    description= models.TextField()
+    translations = TranslatedFields(
+        name= models.CharField(max_length=1024),
+        description= models.TextField(),
+        )
 
     def __unicode__(self):
         return self.name
 
-class Topic(models.Model):
-    slug= models.SlugField(unique=True)
-    name= models.CharField(max_length=1024)
-    description= models.TextField()
+class Topic(TranslatableModel):
+    translations = TranslatedFields(
+        name= models.CharField(max_length=1024),
+        description= models.TextField()
+        )
 
     def __unicode__(self):
         return self.name
 
-class Tool(models.Model):
-    name= models.CharField(max_length=1024)
+class Tool(TranslatableModel):
     slug= models.SlugField(unique=True)
-    description= models.TextField()
+    translations = TranslatedFields(
+        name= models.CharField(max_length=1024),
+        description= models.TextField()
+        )
 
     def __unicode__(self):
         return self.name
 
-class Tag(models.Model):
-    name= models.CharField(max_length=1024)
+class Tag(TranslatableModel):
     slug= models.SlugField(unique=True)
-    description= models.TextField()
+    translations = TranslatedFields(
+        name= models.CharField(max_length=1024),
+        description= models.TextField()
+        )
 
     def __unicode__(self):
         return self.name
 
-class Audience(models.Model):
-    name= models.CharField(max_length=1024)
+class Audience(TranslatableModel):
     slug= models.SlugField(unique=True)
-    description= models.TextField()
+    translations = TranslatedFields(
+        name= models.CharField(max_length=1024),
+        description= models.TextField()
+        )
 
     def __unicode__(self):
         return self.name
 
-class Skill(models.Model):
-    name= models.CharField(max_length=1024)
+class Skill(TranslatableModel):
     slug= models.SlugField(unique=True)
-    description= models.TextField()
+    translations = TranslatedFields(
+        name= models.CharField(max_length=1024),
+        description= models.TextField()
+        )
 
     def __unicode__(self):
         return self.name
 
-class Module(models.Model):
-    name= models.CharField(max_length=1024)
+class Module(TranslatableModel):
     slug= models.SlugField(unique=True)
-    description= models.TextField()
-    text= models.TextField()
+    translations = TranslatedFields (
+        name= models.CharField(max_length=1024),
+        description= models.TextField(),
+        text= models.TextField()
+        )
     image_url= models.URLField(blank=True,null=True)
     level= models.CharField(max_length = 10, 
                             choices = [
