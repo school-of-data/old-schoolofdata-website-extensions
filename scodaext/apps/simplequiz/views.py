@@ -29,9 +29,15 @@ def quiz(request,slug):
         post = request.POST
         q = get_object_or_404(Quiz,slug=slug)
         questions = q.questions
+        print post
         for i in questions:
             i.correct = Answer.objects.get(question=i, correct=True)
-            i.answered = Answer.objects.get(id=int(post[str(i.id)]))
+            try:
+                i.answered = Answer.objects.get(id=int(post.get(str(i.id),False)))
+            except Answer.DoesNotExist:
+                i.answered = Answer()
+                i.answered.correct = False
+                i.answered.answer = "No answer given"
         answers = [i.answered for i in questions]    
         correct = sum((i.correct for i in answers))
         percent = correct/len(answers) * 100
