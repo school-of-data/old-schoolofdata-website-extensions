@@ -4,6 +4,7 @@ from django.contrib.auth.models import User,Group
 
 class Profile(models.Model):
     user = models.ForeignKey(User)
+    description = models.TextField(null=True,blank=True)
 
     def __unicode__(self):
         return self.user

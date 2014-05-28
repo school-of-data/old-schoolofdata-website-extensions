@@ -1,4 +1,4 @@
-
+import hashlib
 from django.shortcuts import render_to_response, \
     get_object_or_404
 from django.core.context_processors import csrf
@@ -23,6 +23,7 @@ def new(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
+            auth.login(request,new_user)
             return HttpResponseRedirect("/user/%s/"%new_user.username)
     else:
             form = UserCreationForm()
@@ -62,14 +63,17 @@ def logout(request):
     
 
 def profile(request,username):
+    print "username: %s"%username
     profileuser = User.objects.get(username = username);
+    gurl = "https://www.gravatar.com/avatar/%s"%hashlib.md5(profileuser.email).hexdigest()
     try:
-        profile = Profile.objects.get(user = user);
+        profile = Profile.objects.get(user = profileuser);
     except Profile.DoesNotExist:
         profile = None
-    activities = Activity.objects.filter(user = user);
+    activities = Activity.objects.filter(user = profileuser);
     c={"profileuser" : 
         profileuser,
+        "gurl": gurl,
         "profile":
          profile ,
          "activities": activities}
