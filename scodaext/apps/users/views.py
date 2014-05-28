@@ -36,6 +36,8 @@ def new(request):
 
 def login(request):
     """ show the login form and perform the login """
+    if request.user.is_authenticated():
+        return HttpResponseRedirect("/user/%s/"%request.user.username)
     if request.method == 'POST':
         username = request.POST.get("username", '')
         password = request.POST.get("password", '')
@@ -60,7 +62,19 @@ def logout(request):
     
 
 def profile(request,username):
-    pass
+    profileuser = User.objects.get(username = username);
+    try:
+        profile = Profile.objects.get(user = user);
+    except Profile.DoesNotExist:
+        profile = None
+    activities = Activity.objects.filter(user = user);
+    c={"profileuser" : 
+        profileuser,
+        "profile":
+         profile ,
+         "activities": activities}
+    return render_to_response("users/profile.html",c,
+                               context_instance=RequestContext(request))
 
 def editprofile(request,username):
     pass
