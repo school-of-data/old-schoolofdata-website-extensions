@@ -11,8 +11,8 @@ urlpatterns = patterns(
         'scodaext.apps.users.views.login'),
     url(r'^logout/$',
         'scodaext.apps.users.views.logout'),
-    url(r'^(?P<username>)/$',
+    url(r'^(?P<username>)[-\w]+/$',
         'scodaext.apps.users.views.profile'),
-    url(r'^(?P<username>)/edit/$',
+    url(r'^(?P<username>)[-\w]+/edit/$',
         'scodaext.apps.users.views.editprofile')
     )
