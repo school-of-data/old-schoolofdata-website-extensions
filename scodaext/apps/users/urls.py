@@ -4,7 +4,7 @@ import scodaext.apps.users.views
 urlpatterns = patterns(
     '',
     url(r'^$',
-        'scodaext.apps.users.start'),
+        'scodaext.apps.users.views.start'),
     url(r'^new/$',
         'scodaext.apps.users.views.new'),
     url(r'^login/$',
