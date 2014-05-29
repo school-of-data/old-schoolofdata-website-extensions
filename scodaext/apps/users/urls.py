@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 import scodaext.apps.users.views
+import django.contrib.auth.views
 
 urlpatterns = patterns(
     '',
@@ -11,8 +12,12 @@ urlpatterns = patterns(
         'scodaext.apps.users.views.login'),
     url(r'^logout/$',
         'scodaext.apps.users.views.logout'),
+    url(r'^edit/$',
+        'scodaext.apps.users.views.editprofile'),
+    url(r'^password$',
+        'scodaext.apps.users.views.password'),
     url(r'^(?P<username>[-\w]+)/$',
         'scodaext.apps.users.views.profile'),
-    url(r'^(?P<username>[-\w]+)/edit/$',
-        'scodaext.apps.users.views.editprofile')
+    url(r'^(?P<username>[-\w]+)/badges/$',
+        'scodaext.apps.users.views.badges'),
     )

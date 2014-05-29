@@ -5,12 +5,14 @@ from django.core.context_processors import csrf
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.template.context import RequestContext 
 from django.http import HttpResponseRedirect
+from django.utils.html import conditional_escape
 
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext_lazy as _
 from scodaext.apps.users.models import *
+from scodaext.apps.users.forms import EditProfileForm
 # Create your views here.
 
 def start(request):
@@ -63,7 +65,6 @@ def logout(request):
     
 
 def profile(request,username):
-    print "username: %s"%username
     profileuser = User.objects.get(username = username);
     gurl = "https://www.gravatar.com/avatar/%s"%hashlib.md5(profileuser.email).hexdigest()
     try:
@@ -80,5 +81,56 @@ def profile(request,username):
     return render_to_response("users/profile.html",c,
                                context_instance=RequestContext(request))
 
-def editprofile(request,username):
+def editprofile(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("../login/")
+    try:
+        profile = Profile.objects.get(user = request.user) 
+    except Profile.DoesNotExist:
+        profile = Profile(user = request.user)
+    if request.method == "POST":
+        form = EditProfileForm(request.POST)
+        if form.is_valid(): 
+            # do the changes!
+            u= request.user
+            u.last_name = form.cleaned_data['last_name']
+            u.first_name = form.cleaned_data['first_name']
+            u.email = form.cleaned_data['email']
+            u.save()
+            profile.description = conditional_escape(form.cleaned_data['description'])
+            profile.save()
+            return HttpResponseRedirect("../%s/"%u.username)
+    else:
+        try:
+            profile = Profile.objects.get(user = request.user) 
+        except Profile.DoesNotExist:
+            profile = Profile()
+        form = EditProfileForm(
+            {"last_name": request.user.last_name,
+             "first_name": request.user.first_name,
+             "email": request.user.email,
+             "description": profile.description,})
+    c={"form": form}
+    c.update(csrf(request))
+    return render_to_response("users/editprofile.html", c, 
+        context_instance=RequestContext(request))
+
+def password(request):
     pass
+
+def badges(request,username):
+    profileuser = User.objects.get(username = username);
+    gurl = "https://www.gravatar.com/avatar/%s"%hashlib.md5(profileuser.email).hexdigest()
+    try:
+        profile = Profile.objects.get(user = profileuser);
+    except Profile.DoesNotExist:
+        profile = None
+    badges = []
+    c={"profileuser" : 
+        profileuser,
+        "gurl": gurl,
+        "profile":
+         profile ,
+         "badges": badges}
+    return render_to_response("users/badges.html",c,
+                               context_instance=RequestContext(request))

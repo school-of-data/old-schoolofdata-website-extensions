@@ -1,0 +1,23 @@
+{% extends "with-footer.html" %}
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load md %}
+{% block "title" %}
+School of Data
+{% endblock %}
+
+{% block base_content %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+<div class="row-fluid">
+    <div class="offset1 span10">
+        <h1>Edit your Profile</h1>
+        <form method="POST" action="">
+        {{form.as_p}}
+        {% csrf_token %}
+        <input type="submit" name="Submit" value="Submit" />
+        </form>
+    </div>
+</div>
+{% endblock %}

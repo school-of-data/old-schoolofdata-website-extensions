@@ -25,18 +25,21 @@ School of Data
             </div>
         </div>
         <ul class="nav nav-tabs usernav">
-            <li class="active">
-                <a href="#">Activities</a>
-            </li>
             <li>
+                <a href="../">Activities</a>
+            </li>
+            <li class="active">
                 <a href="badges/">Badges</a>
             </li>
             {% if request.user = profileuser %}
             <li>
-                <a href="../edit/">Edit</a>
+                <a href="../../edit/">Edit</a>
             </li>
             {% endif %}
         </ul>
+        <div class="list">
+            To be implemented...
+        </div>
     </div>
 </div>
 {% endblock %}
