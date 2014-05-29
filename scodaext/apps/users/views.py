@@ -9,7 +9,7 @@ from django.utils.html import conditional_escape
 
 from django.contrib import auth
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 from scodaext.apps.users.models import *
 from scodaext.apps.users.forms import EditProfileForm
@@ -116,7 +116,20 @@ def editprofile(request):
         context_instance=RequestContext(request))
 
 def password(request):
-    pass
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("../login/")
+    if request.method == "POST":
+        form = PasswordChangeForm(user= request.user, data = request.POST)
+        if form.is_valid():
+            # do stuff
+            form.save()
+            return HttpResponseRedirect("../%s/"%request.user.username)
+    else:
+        form = PasswordChangeForm(user = request.user)
+    c={"form": form}
+    c.update(csrf(request))
+    return render_to_response("users/password.html", c,
+        context_instance=RequestContext(request))
 
 def badges(request,username):
     profileuser = User.objects.get(username = username);
