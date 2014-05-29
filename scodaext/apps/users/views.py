@@ -13,6 +13,7 @@ from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 from scodaext.apps.users.models import *
 from scodaext.apps.users.forms import EditProfileForm
+from scodaext.apps.users.util import add_activity
 # Create your views here.
 
 def start(request):
@@ -25,7 +26,6 @@ def new(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
-            auth.login(request,new_user)
             return HttpResponseRedirect("/user/%s/"%new_user.username)
     else:
             form = UserCreationForm()
@@ -65,13 +65,16 @@ def logout(request):
     
 
 def profile(request,username):
-    profileuser = User.objects.get(username = username);
-    gurl = "https://www.gravatar.com/avatar/%s"%hashlib.md5(profileuser.email).hexdigest()
+    profileuser = get_object_or_404(User, username= username)
+    if profileuser.email:
+        gurl = "https://www.gravatar.com/avatar/%s"%hashlib.md5(profileuser.email).hexdigest()
+    else:   
+        gurl = "http://www.gravatar.com/avatar/goo"
     try:
         profile = Profile.objects.get(user = profileuser);
     except Profile.DoesNotExist:
         profile = None
-    activities = Activity.objects.filter(user = profileuser);
+    activities = Activity.objects.filter(user = profileuser).order_by('-date')[:20]
     c={"profileuser" : 
         profileuser,
         "gurl": gurl,
