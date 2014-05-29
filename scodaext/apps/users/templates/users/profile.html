@@ -37,6 +37,18 @@ School of Data
             </li>
             {% endif %}
         </ul>
+        <div class="list">
+        <ul>
+        {% for a in activities %}
+        <li>
+        <span class="small">{{a.date}}</span>
+        <p>
+        {{a.activity|markdown}}
+        </p>
+        </li>
+        {% endfor %}
+        </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
