@@ -1,0 +1,16 @@
+{% extends "with-footer.html" %}
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% block "title" %}
+School of Data - Create a user account
+{% endblock %}
+
+{% block base_content %}
+<h1> Create an Account </h1>
+
+<form action="" method="POST">
+    {{form.as_p }}
+    {% csrf_token %}
+    <input type="submit" name="Submit" value="Submit" />
+</form>
+{% endblock %}

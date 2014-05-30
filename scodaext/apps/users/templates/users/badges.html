@@ -1,0 +1,45 @@
+{% extends "with-footer.html" %}
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load md %}
+{% block "title" %}
+School of Data
+{% endblock %}
+
+{% block base_content %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/scoda-ext.css" />
+{% endaddtoblock %}
+<div class="row-fluid">
+    <div class="offset1 span10">
+        <div class="basicuser row-fluid">
+            <div class="span2">
+            <img src="{{gurl}}?s=200&d=mm" width="100%" />
+            </div>
+            <div class="span10">
+            <h1>{{profileuser.first_name}} {{profileuser.last_name}}</h1>
+            <span class="subtitle">({{profileuser.username}})</span>
+            <p>
+            {{profile.description|markdown}}
+            </p>
+            </div>
+        </div>
+        <ul class="nav nav-tabs usernav">
+            <li>
+                <a href="../">Activities</a>
+            </li>
+            <li class="active">
+                <a href="badges/">Badges</a>
+            </li>
+            {% if request.user = profileuser %}
+            <li>
+                <a href="../../edit/">Edit</a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="list">
+            To be implemented...
+        </div>
+    </div>
+</div>
+{% endblock %}
