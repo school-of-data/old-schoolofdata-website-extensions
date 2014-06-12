@@ -152,3 +152,7 @@ form select {
     display: inline-block;
     min-width: 150px;
     }
+
+.usernav {
+    margin-top: 10px;
+    }

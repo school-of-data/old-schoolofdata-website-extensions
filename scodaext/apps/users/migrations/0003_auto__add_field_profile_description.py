@@ -8,29 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Profile'
-        db.create_table(u'users_profile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-        ))
-        db.send_create_signal(u'users', ['Profile'])
-
-        # Adding model 'Activity'
-        db.create_table(u'users_activity', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
-            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
-            ('activity', self.gf('django.db.models.fields.TextField')()),
-        ))
-        db.send_create_signal(u'users', ['Activity'])
+        # Adding field 'Profile.description'
+        db.add_column(u'users_profile', 'description',
+                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Profile'
-        db.delete_table(u'users_profile')
-
-        # Deleting model 'Activity'
-        db.delete_table(u'users_activity')
+        # Deleting field 'Profile.description'
+        db.delete_column(u'users_profile', 'description')
 
 
     models = {
@@ -79,6 +65,7 @@ class Migration(SchemaMigration):
         },
         u'users.profile': {
             'Meta': {'object_name': 'Profile'},
+            'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
         }
