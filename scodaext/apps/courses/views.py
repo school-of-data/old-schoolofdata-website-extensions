@@ -44,7 +44,9 @@ def createmodule(request):
     if request.method == 'POST':
         form = ModuleForm(request.POST);
         if form.is_valid():
-            form.save()
+            m = form.save()
+            m.contributor.add(request.user)
+            m.save() # not sure this is needed.
     else:
         form = ModuleForm() 
 
