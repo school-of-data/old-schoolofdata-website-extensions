@@ -7,10 +7,6 @@ urlpatterns = patterns(
     # url(r'^$', 'scodaquiz.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', 'scodaext.apps.courses.views.start'),
-    url(r'^(?P<course>[-\w]+)/$', 
-        'scodaext.apps.courses.views.courseview'),
-    url(r'^(?P<course>[-\w]+)/(?P<module>[-\w]+)/$',
-        'scodaext.apps.courses.views.moduleview'),
     url(r'^module/(?P<module>[-\w]+)/edit/$',
         'scodaext.apps.courses.views.editmodule'),
     url(r'^(?P<course>[-\w]+)/edit/$',
@@ -19,5 +15,11 @@ urlpatterns = patterns(
         'scodaext.apps.courses.views.createcourse'),
     url(r'^module/create/$',
         'scodaext.apps.courses.views.createmodule'),
+    url(r'^module/(?P<module>[-\w]+)/$',
+        'scodaext.apps.courses.views.moduleview'),
+    url(r'^(?P<course>[-\w]+)/$', 
+        'scodaext.apps.courses.views.courseview'),
+    url(r'^(?P<course>[-\w]+)/(?P<module>[-\w]+)/$',
+        'scodaext.apps.courses.views.moduleview'),
 
 )

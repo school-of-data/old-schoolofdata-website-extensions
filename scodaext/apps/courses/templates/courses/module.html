@@ -1,0 +1,17 @@
+{% extends 'with-footer.html' %}
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load md %}
+
+{% block "title" %}
+School of Data - {{module.name}}
+{% endblock %}
+{% block base_content %}
+
+<div class="row-fluid">
+<div class="offset1 span10">
+<h1>{{module.name}}</h1>
+{{module.text|markdown}}
+</div>
+</div>
+{% endblock %}

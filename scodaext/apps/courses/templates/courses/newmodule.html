@@ -1,0 +1,21 @@
+{% extends 'with-footer.html' %}
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load md %}
+
+{% block "title" %}
+Create a new module
+{% endblock %}
+{% block base_content %}
+
+<div class="row-fluid">
+<div class="offset1 span10">
+<h1>Create a new Module</h1>
+<form method="POST" action="">
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="submit" name="Submit" value="Submit" />
+</form>
+</div>
+</div>
+{% endblock %}
