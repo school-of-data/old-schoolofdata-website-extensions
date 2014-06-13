@@ -83,7 +83,10 @@ class Module(TranslatableModel):
     tag= models.ManyToManyField(Tag, null=True,blank=True)
     audience= models.ManyToManyField(Audience, null=True,blank=True)
     skill= models.ManyToManyField(Skill, null=True,blank=True)
-    completedby= models.ManyToManyField(User, null=True, blank=True)
+    contributor = models.ManyToManyField(User, null=True, blank=True,
+        db_table="models_contribution",related_name="contributed")
+    completedby= models.ManyToManyField(User, null=True, blank=True,
+        related_name="completed")
     
 
     def __unicode__(self):
