@@ -8,4 +8,8 @@ class ModuleForm(TranslatableModelForm):
         fields = ['slug','name','description','text',
         'level','topic','tool','tag','audience','skill']
 
-        
+ 
+class CourseForm(TranslatableModelForm):
+    class Meta:
+        model = Course
+        fields = ['slug', 'name', 'description']

@@ -18,7 +18,15 @@ def start(request):
         context_instance=RequestContext(request))
 
 def courseview(request,course):
-    pass
+    language= get_language_from_request(request)
+    course = get_object_or_404(Course,slug=course)
+    modules = [i.module for i in 
+        CourseModule.objects.filter(course=course).order_by('order')]
+    c={"course": course,
+       "modules": modules }
+
+    return render_to_response("courses/course.html", c,
+        context_instance=RequestContext(request))
 
 def moduleview(request,course=None,module=None):
     lang = get_language_from_request(request)
@@ -62,7 +70,19 @@ def editcourse(request,course):
     pass
 
 def createcourse(request):
-    pass
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/user/login")
+    if request.method == 'POST':
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            course=form.save()
+    else:
+        form = CourseForm()
+    c = {"form": form,
+        }
+    c.update(csrf(request))
+    return render_to_response("courses/newcourse.html",c,
+        context_instance=RequestContext(request))
 
 def createmodule(request):
     if not request.user.is_authenticated():

@@ -1,0 +1,27 @@
+{% extends 'with-footer.html' %}
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load md %}
+
+{% block "title" %}
+School of Data - {{course.name}}
+{% endblock %}
+{% block base_content %}
+
+<div class="row-fluid">
+<div class="offset1 span10">
+<h1>{{course.name}}</h1>
+{{course.description|markdown}}
+{% if modules %}
+<ul class="modules">
+{% for module in modules %}
+    <li>
+    <a href="./{{module.slug}}"><h2>{{module.name}}</h2></a>
+    {{module.description|markdown}}
+    </li>
+{% endfor %}
+</ul>
+{% endif %}
+</div>
+</div>
+{% endblock %}
