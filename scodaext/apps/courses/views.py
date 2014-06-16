@@ -32,6 +32,30 @@ def moduleview(request,course=None,module=None):
         
 
 def editmodule(request,module):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/user/login")
+    m = get_object_or_404(Module,slug=module)
+    if request.method == 'POST':
+        form = ModuleForm(request.POST, instance=m)
+        form.language = get_language_from_request(request)
+        if form.is_valid():
+            m = form.save()
+            try:
+                m.contributor.get(id=request.user.id)
+            except m.contributor.DoesNotExist:
+                m.contributor.add(request.user)
+            m.save()
+            return HttpResponseRedirect("../")
+    else:
+        form = ModuleForm(instance=m)
+    c={"form": form,
+       "module": m}
+    c.update(csrf(request))
+
+    return render_to_response("courses/editmodule.html",c,
+        context_instance=RequestContext(request))
+
+
     pass
 
 def editcourse(request,course):
@@ -41,12 +65,15 @@ def createcourse(request):
     pass
 
 def createmodule(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/user/login")
     if request.method == 'POST':
-        form = ModuleForm(request.POST);
+        form = ModuleForm(request.POST)
         if form.is_valid():
             m = form.save()
             m.contributor.add(request.user)
             m.save() # not sure this is needed.
+            return HttpResponseRedirect("../%s"%m.slug)
     else:
         form = ModuleForm() 
 
