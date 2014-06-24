@@ -12,6 +12,10 @@ School of Data - {{module.name}}
 <div class="offset1 span10">
 <h1>{{module.name}}</h1>
 {{module.text|markdown}}
+
+{% if instance.quiz %}
+{% include "simplequiz/plugin.html" %}
+{% endif %}
 </div>
 </div>
 {% endblock %}

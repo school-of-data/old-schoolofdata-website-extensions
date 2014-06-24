@@ -30,11 +30,20 @@ def courseview(request,course):
 
 def moduleview(request,course=None,module=None):
     lang = get_language_from_request(request)
+    if course:
+        try:
+            c = Course.objects.language(lang).get(slug=course) 
+        except Course.DoesNotExist:
+            c = None
+    else:
+        c = None
     try:
         m = Module.objects.language(lang).get(slug=module)
     except Module.DoesNotExist:
         return HttpResponseNotFound()
-    c={"module": m}
+    c={"module": m,
+       "instance": m,
+       "course": c}
     return render_to_response("courses/module.html",c,
         context_instance=RequestContext(request))
         

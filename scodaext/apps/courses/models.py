@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from hvad.models import TranslatableModel, TranslatedFields
+from scodaext.apps.simplequiz.models import Quiz
 
 # Create your models here.
 
@@ -87,6 +88,7 @@ class Module(TranslatableModel):
         db_table="models_contribution",related_name="contributed")
     completedby= models.ManyToManyField(User, null=True, blank=True,
         related_name="completed")
+    quiz = models.ForeignKey(Quiz,blank=True,null=True)
     
 
     def __unicode__(self):
