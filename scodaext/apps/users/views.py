@@ -5,8 +5,8 @@ from django.core.context_processors import csrf
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.template.context import RequestContext 
 from django.http import HttpResponseRedirect
-from django.utils.html import conditional_escape
-
+from django.utils.html import conditional_escapefrom
+from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
@@ -83,10 +83,8 @@ def profile(request,username):
          "activities": activities}
     return render_to_response("users/profile.html",c,
                                context_instance=RequestContext(request))
-
+@login_required
 def editprofile(request):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect("../login/")
     try:
         profile = Profile.objects.get(user = request.user) 
     except Profile.DoesNotExist:
@@ -118,9 +116,8 @@ def editprofile(request):
     return render_to_response("users/editprofile.html", c, 
         context_instance=RequestContext(request))
 
+@login_required
 def password(request):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect("../login/")
     if request.method == "POST":
         form = PasswordChangeForm(user= request.user, data = request.POST)
         if form.is_valid():
