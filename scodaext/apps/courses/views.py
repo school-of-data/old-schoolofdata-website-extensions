@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.template.context import RequestContext 
 from django.utils.translation import get_language_from_request
+from django.contrib.auth.decorators import login_required
 from scodaext.apps.courses.forms import *;
 from scodaext.apps.courses.models import *;
 
@@ -48,9 +49,8 @@ def moduleview(request,course=None,module=None):
         context_instance=RequestContext(request))
         
 
+@login_required
 def editmodule(request,module):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect("/user/login")
     m = get_object_or_404(Module,slug=module)
     if request.method == 'POST':
         form = ModuleForm(request.POST, instance=m)
@@ -75,9 +75,11 @@ def editmodule(request,module):
 
     pass
 
+@login_required
 def editcourse(request,course):
     pass
 
+@login_required
 def createcourse(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect("/user/login")
@@ -93,9 +95,8 @@ def createcourse(request):
     return render_to_response("courses/newcourse.html",c,
         context_instance=RequestContext(request))
 
+@login_required
 def createmodule(request):
-    if not request.user.is_authenticated():
-        return HttpResponseRedirect("/user/login")
     if request.method == 'POST':
         form = ModuleForm(request.POST)
         if form.is_valid():

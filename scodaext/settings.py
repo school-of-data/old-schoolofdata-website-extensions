@@ -141,3 +141,5 @@ CMS_TEMPLATES = (
     ('template_1.html', 'Basic Page'),
     ('frontpage.html', 'Frontpage'),
 )
+
+LOGIN_URL = "/user/login/"
