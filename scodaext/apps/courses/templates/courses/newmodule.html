@@ -7,6 +7,9 @@
 Create a new module
 {% endblock %}
 {% block base_content %}
+{% addtoblock "js" %}
+<script src="/static/js/slugname.js"></script>
+{% endaddtoblock %}
 
 <div class="row-fluid">
 <div class="offset1 span10">
