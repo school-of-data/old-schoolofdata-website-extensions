@@ -1,0 +1,14 @@
+
+p.slug label, p.slug input {
+    font-size: 70%;
+    line-height: 70%;
+    }
+p.slug input {
+    background: yellow;
+    height: 16px;
+    }
+
+textarea {
+    margin-left: auto;
+    width: 90%;
+    }

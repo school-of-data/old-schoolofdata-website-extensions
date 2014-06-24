@@ -5,7 +5,7 @@ from django.core.context_processors import csrf
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.template.context import RequestContext 
 from django.http import HttpResponseRedirect
-from django.utils.html import conditional_escapefrom
+from django.utils.html import conditional_escape
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from django.contrib.auth.models import User

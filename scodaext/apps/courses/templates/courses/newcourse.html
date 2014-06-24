@@ -10,12 +10,30 @@ Create a new course
 {% addtoblock "js" %}
 <script src="/static/js/slugname.js"></script>
 {% endaddtoblock %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/css/courses.css" />
+{% endaddtoblock %}
 
 <div class="row-fluid">
 <div class="offset1 span10">
 <h1>Create a new course</h1>
 <form method="POST" action="">
-    {{form.as_p}}
+    {{ form.non_field_errors }}
+    <p>
+    <label for="id_name">Name:</label>
+    {{form.name.errors}}
+    {{form.name}}
+    </p>
+    <p class="slug">
+    <label for="id_slug">Slug:</label>
+    {{form.slug.errors}}
+    {{form.slug}}
+    </p>
+    <p>
+    <label for="id_description">Description:</label>
+    {{from.description.errors}}
+    {{form.description}}
+    </p>
     {% csrf_token %}
     <input type="submit" name="Submit" value="Submit" />
 </form>
