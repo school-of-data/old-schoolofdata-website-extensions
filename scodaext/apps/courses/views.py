@@ -72,12 +72,36 @@ def editmodule(request,module):
     return render_to_response("courses/editmodule.html",c,
         context_instance=RequestContext(request))
 
-
-    pass
-
 @login_required
 def editcourse(request,course):
-    pass
+    c = get_object_or_404(Course, slug=course)
+    if request.method == 'POST':
+        form = CourseForm(request.POST, instance=c)
+        form.language = get_language_from_request(request)
+        if form.is_valid():
+            c = form.save()
+            return HttpResponseRedirect("../")
+    else:
+        form = CourseForm(instance =c)
+    ct = {"form": form,
+          "course": c}
+    ct.update(csrf(request))
+    return render_to_response("courses/editcourse.html", ct,
+        context_instance = RequestContext(request))
+
+@login_required
+def editcoursemodule(request,course):
+    course = get_object_or_404(Course, slug=course)
+    coursemodules = CourseModule.objects.filter(course=course)
+    if request.method =='POST':
+        pass
+    else:
+        pass
+    c = {"course": course,
+         "coursemodules": coursemodules }
+    c.update(csrf(request))
+    return render_to_response("courses/editcoursemodule.html", c,
+        context_instance = RequestContext(request))
 
 @login_required
 def createcourse(request):

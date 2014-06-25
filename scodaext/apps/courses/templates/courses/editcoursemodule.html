@@ -1,0 +1,27 @@
+{% extends 'with-footer.html' %}
+{% load cms_tags %}
+{% load sekizai_tags %}
+{% load md %}
+
+{% block "title" %}
+Edit {{course.name}}
+{% endblock %}
+{% block base_content %}
+<div class="row-fluid">
+<div class="offset1 span10">
+<h1>Edit {{course.name}}</h1>
+<ul class="nav nav-tabs">
+    <li><a href="../">Description</a></li>
+    <li class="active"><a href="#">Modules</a></li>
+</ul>
+Magic here!
+<ul id="selectlist">
+{% for cm in coursemodules %}
+<li><h2>{{cm.module.name}}</h2>
+    <p>{{cm.module.description|markdown}}</p>
+</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endblock %}

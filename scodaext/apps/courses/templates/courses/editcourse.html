@@ -4,12 +4,16 @@
 {% load md %}
 
 {% block "title" %}
-Create a new course
+Edit {{course.name}}
 {% endblock %}
 {% block base_content %}
 <div class="row-fluid">
 <div class="offset1 span10">
-<h1>Create a new course</h1>
+<h1>Edit {{course.name}}</h1>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">Description</a></li>
+    <li><a href="modules/">Modules</a></li>
+</ul>
 {% include "courses/courseform.html" %}
 </div>
 </div>
