@@ -15,7 +15,8 @@ from scodaext.apps.courses.models import *;
 # Create your views here.
 
 def start(request):
-    data = {}
+    courses = Course.objects.all()
+    data = {"courses": courses}
     return render_to_response("courses/start.html", data,
         context_instance=RequestContext(request))
 

@@ -7,5 +7,16 @@ Courses
 {% endblock %}
 
 {% block base_content %}
-<i>Course overview here</i>
+<div class="row-fluid">
+<div class="offset1 span10">
+<h1>Courses on the School of Data</h1>
+<ul class="courselist">
+{% for c in courses %}
+<li><a href="{{c.slug}}/"><h2>{{c.name}}</h2></a>
+    <p>{{c.description|markdown}}</p>
+    </li>
+{% endfor %}
+
+</ul>
+</div></div>
 {% endblock %}
