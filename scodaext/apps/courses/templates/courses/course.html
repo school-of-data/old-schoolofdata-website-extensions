@@ -7,13 +7,15 @@
 School of Data - {{course.name}}
 {% endblock %}
 {% block base_content %}
-
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/css/courses.css" />
+{% endaddtoblock %}
 <div class="row-fluid">
 <div class="offset1 span10">
 <h1>{{course.name}}</h1>
 {{course.description|markdown}}
 {% if modules %}
-<ul class="modules">
+<ul class="modulelist">
 {% for module in modules %}
     <li>
     <a href="./{{module.slug}}"><h2>{{module.name}}</h2></a>
@@ -21,6 +23,11 @@ School of Data - {{course.name}}
     </li>
 {% endfor %}
 </ul>
+{% endif %}
+{% if request.user.is_authenticated %}
+<small>
+<p><a href="edit/">Edit</a> this course</p>
+</small>
 {% endif %}
 </div>
 </div>

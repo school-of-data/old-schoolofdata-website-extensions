@@ -11,5 +11,20 @@ p.slug input {
 textarea {
     margin-left: auto;
     width: 90%;
-    height: 400px;
+    height: 200px;
     }
+
+ul.modulelist {
+    list-style: none;
+    margin: 0;
+    }
+
+ul.modulelist li{
+    background: #CCCCCC;
+    padding: 2px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    }
+ul.modulelist > li> h2, ul.modulelist > li > a > h2  {
+    margin-top: 0;
+    }    

@@ -1,8 +1,9 @@
+import json
 from django.shortcuts import render
 from django.shortcuts import render_to_response, \
     get_object_or_404
 from django.core.context_processors import csrf
-from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.template.context import RequestContext 
 from django.utils.translation import get_language_from_request
@@ -92,13 +93,33 @@ def editcourse(request,course):
 @login_required
 def editcoursemodule(request,course):
     course = get_object_or_404(Course, slug=course)
-    coursemodules = CourseModule.objects.filter(course=course)
+    coursemodules = CourseModule.objects.filter(course=course).order_by('order')
     if request.method =='POST':
-        pass
+        slugs=request.POST.get('slugs','').split(",")
+        for (i, slug) in enumerate(slugs):
+            cm = coursemodules.filter(module__slug=slug)
+            if cm:
+                cm=cm[0] # this doesn't handle well with multiple same modules
+                cm.order=i
+            else:
+                module = Module.objects.get(slug=slug)
+                cm=CourseModule(course=course,module=module, order=i)
+            cm.save()
+        slugs=set(slugs)
+        cms = set([i.module.slug for i in coursemodules])
+        diff = cms.difference(slugs)
+        for cm in diff:
+            for m in coursemodules.filter(module__slug=cm):
+                m.delete()
+        return HttpResponseRedirect("../../")             
     else:
         pass
     c = {"course": course,
-         "coursemodules": coursemodules }
+         "coursemodules": json.dumps([
+                {"name":i.module.name,
+                 "slug":i.module.slug,
+                 "description":i.module.description,
+                 "image_url":i.module.image_url} for i in coursemodules])}
     c.update(csrf(request))
     return render_to_response("courses/editcoursemodule.html", c,
         context_instance = RequestContext(request))
@@ -135,3 +156,20 @@ def createmodule(request):
     c.update(csrf(request))
     return render_to_response("courses/newmodule.html",c,
         context_instance=RequestContext(request))
+
+def searchmodule(request):
+    if 'q' in request.GET:
+        lang=get_language_from_request(request)
+        ms = Module.objects.language(lang).filter(name__icontains=request.GET.get('q'))[:10]
+        r={"status":"success",
+           "result": [{"name": i.name,
+                       "description": i.description,
+                       "image_url": i.image_url,
+                       "slug": i.slug} for i in ms],
+                
+            } 
+    else:
+        r={"status":"error",
+           "reason":"you did non pass a query"}
+    
+    return HttpResponse(json.dumps(r), content_type="application/json")

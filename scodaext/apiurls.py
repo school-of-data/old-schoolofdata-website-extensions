@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     # url(r'^quiz/',include(scodaext.apps.simplequiz.urls)),
     # url(r'^feedback/',include(scodaext.apps.feedbackform.urls)),
-    url(r^'^courses/',include(scodaext.apps.courses.apiurls)),
+    url(r'^courses/',include(scodaext.apps.courses.apiurls)),
 )
 
 

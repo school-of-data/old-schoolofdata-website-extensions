@@ -14,14 +14,112 @@ Edit {{course.name}}
     <li><a href="../">Description</a></li>
     <li class="active"><a href="#">Modules</a></li>
 </ul>
-Magic here!
-<ul id="selectlist">
-{% for cm in coursemodules %}
-<li><h2>{{cm.module.name}}</h2>
-    <p>{{cm.module.description|markdown}}</p>
-</li>
-{% endfor %}
+<ul id="selectlist" class="modulelist">
+</ul>
+<form method="POST">
+{% csrf_token %}
+<input name="slugs" id="slugs" type="hidden"></input>
+<input type="Submit" value="Submit" id="submit" />
+</form>
+<h3>Add a new Module</h3>
+<label for="search">Search:</label>
+<input id="search" type="text"></input>
+<ul class="modulelist" id="searchresults">
 </ul>
 </div>
 </div>
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/css/courses.css" />
+{% endaddtoblock %}
+{% addtoblock "js" %}
+<script src="/static/js/Markdown.Converter.js"></script>
+<script>
+// ok this is a bunch of ugly js - but works!
+// TODO: maybe move into a .js file ?
+$ = CMS.$;
+var coursemodules = {{coursemodules|safe}};
+
+var converter = new Markdown.Converter();
+function display_coursemodules() {
+    var el=$("#selectlist");
+    el.html("");
+    var slugs=[];
+    for (i in coursemodules) {
+        var html=["<li data-position='",
+              i,
+              "' data-slug='",
+              coursemodules[i].slug,
+              "'><h2>",
+              coursemodules[i].name,
+              "</h2><p>",
+              converter.makeHtml(coursemodules[i].description),
+              "</p></li>"]
+        el.append(html.join(""));
+        slugs.push(coursemodules[i].slug);
+        };
+    $("#slugs").val(slugs.join(","));
+    $("#selectlist li").append("<i class='up icon-arrow-up'></i>")
+    $("#selectlist li").append("<i class='down icon-arrow-down'></i>")
+    $("#selectlist li").append("<i class='minus icon-minus-sign'></i>")
+    $("#selectlist li .minus").on("click",function() {
+        var p=this.parentElement;
+        var i=p.getAttribute("data-slug");
+        coursemodules=coursemodules.filter(function(x) { return x.slug !=i
+        });
+        display_coursemodules();
+        });
+    $("#selectlist li .up").on("click",function() {
+        var p=this.parentElement;
+        var i=parseInt(p.getAttribute("data-position"));
+        if (i==0) { return null };
+        var um=coursemodules[i];
+        coursemodules[i]=coursemodules[i-1];
+        console.log(um);
+        coursemodules[i-1]=um;
+        display_coursemodules();
+        });
+    $("#selectlist li .down").on("click",function() {
+        var p=this.parentElement;
+        var i=parseInt(p.getAttribute("data-position"));
+        if (i==coursemodules.length-1) {
+            return null;
+            };
+        var dm = coursemodules[i];
+        coursemodules[i]=coursemodules[i+1];
+        coursemodules[i+1]=dm;
+        display_coursemodules();
+        });
+    }
+
+display_coursemodules();
+
+$("#search").on("keyup",function() {
+    var el=$("#searchresults");
+    if (!this.value) { el.html(""); return null; };
+    $.getJSON("/api/1/courses/searchmodule?q="+this.value, function(d) {
+        el.html("");
+        var r = d.result;
+        for (i in r) {
+            html=["<li data-positon='",
+                i,
+                "'><h2>",
+                r[i].name,
+                "</h2><p>",
+                converter.makeHtml(r[i].description),
+                "</p></li>"]
+            el.append(html.join(""));    
+            }
+        var lis=$("#searchresults li")
+        lis.append("<i class='plus icon-plus-sign'></i>")
+        $("#searchresults li .plus").on("click", function() {
+            var parent=this.parentElement;
+            var module=r[parent.getAttribute("data-positon")]
+            coursemodules.push(module);
+            display_coursemodules();
+            })
+        })
+    })
+
+</script>
+{% endaddtoblock %}
 {% endblock %}
