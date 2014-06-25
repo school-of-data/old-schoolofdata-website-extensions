@@ -132,6 +132,7 @@ def createcourse(request):
         form = CourseForm(request.POST)
         if form.is_valid():
             course=form.save()
+            return HttpResponseRedirect("../%s/edit/modules/"%course.slug)
     else:
         form = CourseForm()
     c = {"form": form,
