@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+import scodaext.apps.courses.apiurls
 
 urlpatterns = patterns('',
     # Examples:
@@ -7,6 +8,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     # url(r'^quiz/',include(scodaext.apps.simplequiz.urls)),
     # url(r'^feedback/',include(scodaext.apps.feedbackform.urls)),
+    url(r^'^courses/',include(scodaext.apps.courses.apiurls)),
 )
 
 
