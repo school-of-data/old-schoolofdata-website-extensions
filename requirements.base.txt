@@ -12,5 +12,5 @@ git+https://github.com/divio/django-cms.git@645a556cd3e28ee80d69a50ae84335187691
 git+https://github.com/divio/djangocms-text-ckeditor.git
 djangocms-admin-style
 django-reversion
-hvad
+django-hvad
 django-taggit==0.12
