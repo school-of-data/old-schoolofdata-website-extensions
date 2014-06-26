@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'scodaext.apps.feedbackform',
     'scodaext.apps.courses',
     'scodaext.apps.users',
+    'scodaext.apps.mdplugin',
 )
 
 MIDDLEWARE_CLASSES = (
