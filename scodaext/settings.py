@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',  
     'hvad',
     'south',
+    'taggit',
     'scodaext.apps.badgeclient',
     'scodaext.apps.simplequiz',
     'scodaext.apps.feedbackform',
@@ -144,3 +145,7 @@ CMS_TEMPLATES = (
 )
 
 LOGIN_URL = "/user/login/"
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+    }

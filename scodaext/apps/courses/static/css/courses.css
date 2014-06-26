@@ -14,6 +14,10 @@ textarea {
     height: 200px;
     }
 
+textarea[name='text'] {
+    height: 700px;
+    }
+
 ul.modulelist {
     list-style: none;
     margin: 0;

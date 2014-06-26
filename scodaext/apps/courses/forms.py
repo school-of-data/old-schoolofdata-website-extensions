@@ -6,7 +6,7 @@ class ModuleForm(TranslatableModelForm):
     class Meta:
         model = Module
         fields = ['slug','name','description','text',
-        'level','topic','tool','tag','audience','skill', 'quiz']
+        'tags' , 'quiz']
 
  
 class CourseForm(TranslatableModelForm):

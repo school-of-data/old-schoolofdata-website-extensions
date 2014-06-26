@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from hvad.models import TranslatableModel, TranslatedFields
+from taggit.managers import TaggableManager
 from scodaext.apps.simplequiz.models import Quiz
 
 # Create your models here.
@@ -15,60 +16,12 @@ class Course(TranslatableModel):
     def __unicode__(self):
         return self.name
 
-class Topic(TranslatableModel):
-    translations = TranslatedFields(
-        name= models.CharField(max_length=1024),
-        description= models.TextField()
-        )
-
-    def __unicode__(self):
-        return self.name
-
-class Tool(TranslatableModel):
-    slug= models.SlugField(unique=True)
-    translations = TranslatedFields(
-        name= models.CharField(max_length=1024),
-        description= models.TextField()
-        )
-
-    def __unicode__(self):
-        return self.name
-
-class Tag(TranslatableModel):
-    slug= models.SlugField(unique=True)
-    translations = TranslatedFields(
-        name= models.CharField(max_length=1024),
-        description= models.TextField()
-        )
-
-    def __unicode__(self):
-        return self.name
-
-class Audience(TranslatableModel):
-    slug= models.SlugField(unique=True)
-    translations = TranslatedFields(
-        name= models.CharField(max_length=1024),
-        description= models.TextField()
-        )
-
-    def __unicode__(self):
-        return self.name
-
-class Skill(TranslatableModel):
-    slug= models.SlugField(unique=True)
-    translations = TranslatedFields(
-        name= models.CharField(max_length=1024),
-        description= models.TextField()
-        )
-
-    def __unicode__(self):
-        return self.name
 
 class Module(TranslatableModel):
     slug= models.SlugField(unique=True)
     translations = TranslatedFields (
         name= models.CharField(max_length=1024),
-        description= models.TextField(),
+        description= models.TextField(max_length=2000),
         text= models.TextField()
         )
     image_url= models.URLField(blank=True,null=True)
@@ -79,16 +32,13 @@ class Module(TranslatableModel):
                                        ("A","Advanced"),
                                        ("D","There be Dragons"),
                                         ])
-    topic= models.ManyToManyField(Topic, null=True,blank=True)
-    tool= models.ManyToManyField(Tool, null=True,blank=True)
-    tag= models.ManyToManyField(Tag, null=True,blank=True)
-    audience= models.ManyToManyField(Audience, null=True,blank=True)
-    skill= models.ManyToManyField(Skill, null=True,blank=True)
     contributor = models.ManyToManyField(User, null=True, blank=True,
         db_table="models_contribution",related_name="contributed")
     completedby= models.ManyToManyField(User, null=True, blank=True,
         related_name="completed")
     quiz = models.ForeignKey(Quiz,blank=True,null=True)
+    tags = TaggableManager(blank=True)
+
     
 
     def __unicode__(self):

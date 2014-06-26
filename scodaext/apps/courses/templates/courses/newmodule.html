@@ -14,11 +14,7 @@ Create a new module
 <div class="row-fluid">
 <div class="offset1 span10">
 <h1>Create a new Module</h1>
-<form method="POST" action="">
-    {{form.as_p}}
-    {% csrf_token %}
-    <input type="submit" name="Submit" value="Submit" />
-</form>
+{% include "courses/moduleform.html" %}
 </div>
 </div>
 {% endblock %}

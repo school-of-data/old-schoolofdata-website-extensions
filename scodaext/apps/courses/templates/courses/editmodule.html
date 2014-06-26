@@ -11,11 +11,7 @@ Edit {{module.name}}
 <div class="row-fluid">
 <div class="offset1 span10">
 <h1>Edit {{module.name}}</h1>
-<form method="POST" action="">
-    {{form.as_p}}
-    {% csrf_token %}
-    <input type="submit" name="Submit" value="Submit" />
-</form>
+{% include "courses/moduleform.html" %}
 </div>
 </div>
 {% endblock %}

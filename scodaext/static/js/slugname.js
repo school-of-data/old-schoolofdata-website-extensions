@@ -1,21 +1,25 @@
 
-var a=function() {
+var $=CMS.$;
+
+$(document).ready(function() {
     var slugify= function(s) 
         {
             return s.toLowerCase().replace(/[^A-Za-z0-9-]/g,"-")
             }
     
-    var slugifyName = function()
-        {
-            document.getElementsByName('slug')[0].value=slugify(this.value);
-            }
-
-    document.getElementsByName('name')[0].onkeyup=slugifyName;
+    $("input[name='name']").on("keyup",function()
+        {   
+            
+            $("input[name='slug']").val(slugify(this.value));
+            });
     
     if (Markdown) {
-        var converter = new Markdown.Converter();
-        var editor = new Markdown.Editor(converter);
-        editor.run();
+        var suffixes=["","-1"]
+        for (i in suffixes) {
+            var converter = new Markdown.Converter();
+            var editor = new Markdown.Editor(converter,suffixes[i]);
+            editor.run();
         }
-    }();
+        }
+    });
 
