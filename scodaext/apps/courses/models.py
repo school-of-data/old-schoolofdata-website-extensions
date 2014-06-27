@@ -13,9 +13,14 @@ class Course(TranslatableModel):
         name= models.CharField(max_length=1024),
         description= models.TextField(),
         )
-
+    
     def __unicode__(self):
         return self.name
+    
+    class Meta():
+        permissions = (("can_feature", "Can feature courses"),)
+
+
 
 
 class Module(TranslatableModel):
