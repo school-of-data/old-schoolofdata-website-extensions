@@ -8,6 +8,7 @@ from scodaext.apps.simplequiz.models import Quiz
 
 class Course(TranslatableModel):
     slug= models.SlugField(unique=True)
+    featured = models.BooleanField(default=False)
     translations = TranslatedFields(
         name= models.CharField(max_length=1024),
         description= models.TextField(),
