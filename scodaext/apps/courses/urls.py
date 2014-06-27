@@ -11,6 +11,8 @@ urlpatterns = patterns(
         'scodaext.apps.courses.views.editmodule'),
     url(r'^(?P<course>[-\w]+)/edit/$',
         'scodaext.apps.courses.views.editcourse'),
+    url(r'^(?P<course>[-\w]+)/feature/$',
+        'scodaext.apps.courses.views.featurecourse'),
     url(r'^(?P<course>[-\w]+)/edit/modules/$',
         'scodaext.apps.courses.views.editcoursemodule'),
     url(r'^create/$',

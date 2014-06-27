@@ -13,6 +13,15 @@ School of Data - {{course.name}}
 <div class="row-fluid">
 <div class="offset1 span10">
 <h1>{{course.name}}</h1>
+{% if request.user.is_authenticated %}
+<div class="btn-group">
+<a href="edit/" class="btn">Edit</a> 
+<a href="#" class="btn">Translate</a>
+{% if perms.courses.can_feature_course %}
+<a href="feature/" class="btn">Feature</a>
+{% endif %}
+</div>
+{% endif %}
 {{course.description|markdown}}
 {% if modules %}
 <ul class="modulelist">
@@ -23,11 +32,6 @@ School of Data - {{course.name}}
     </li>
 {% endfor %}
 </ul>
-{% endif %}
-{% if request.user.is_authenticated %}
-<small>
-<p><a href="edit/">Edit</a> this course</p>
-</small>
 {% endif %}
 </div>
 </div>

@@ -92,6 +92,14 @@ def editcourse(request,course):
         context_instance = RequestContext(request))
 
 @login_required
+def featurecourse(request,course):
+    if request.user.has_perm('courses.can_feature_course'):
+        c = get_object_or_404(Course, slug=course)
+        c.featured = True
+        c.save()
+    return HttpResponseRedirect("../")
+
+@login_required
 def editcoursemodule(request,course):
     course = get_object_or_404(Course, slug=course)
     coursemodules = CourseModule.objects.filter(course=course).order_by('order')

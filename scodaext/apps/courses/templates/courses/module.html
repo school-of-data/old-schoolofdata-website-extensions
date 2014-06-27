@@ -11,6 +11,12 @@ School of Data - {{module.name}}
 <div class="row-fluid">
 <div class="offset1 span10">
 <h1>{{module.name}}</h1>
+{% if request.user.is_authenticated %}
+<div class="btn-group">
+<a href="edit/" class="btn">Edit</a>
+<a href="#" class="btn">Translate</a>
+</div>
+{% endif %}
 {{module.text|markdown}}
 
 {% if instance.quiz %}
