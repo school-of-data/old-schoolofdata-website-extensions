@@ -9,19 +9,29 @@ School of Data - {{module.name}}
 {% block base_content %}
 
 <div class="row-fluid">
-<div class="offset1 span10">
+<div class="offset1 span8">
 <h1>{{module.name}}</h1>
+{{module.text|markdown}}
+
+{% if instance.quiz %}
+{% include "simplequiz/plugin.html" %}
+{% endif %}
+</div>
+<div class="span2">
 {% if request.user.is_authenticated %}
 <div class="btn-group">
 <a href="edit/" class="btn">Edit</a>
 <a href="#" class="btn">Translate</a>
 </div>
 {% endif %}
-{{module.text|markdown}}
-
-{% if instance.quiz %}
-{% include "simplequiz/plugin.html" %}
-{% endif %}
+<h3>Tags</h3>
+{% for tag in module.tags.all %}
+<a href="/courses/tag/{{tag.name}}/">{{tag.name}}</a>
+{% endfor %}
+<h3>contributors</h3>
+{% for u in module.contributor.all %}
+<a href="/user/{{u.username}}">{{u.username}}</a>
+{% endfor %}
 </div>
 </div>
 {% endblock %}
