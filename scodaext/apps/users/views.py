@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 from scodaext.apps.users.models import *
-from scodaext.apps.users.forms import EditProfileForm
+from scodaext.apps.users.forms import EditProfileForm, CaptchaUserCreationForm
 from scodaext.apps.users.util import add_activity
 # Create your views here.
 
@@ -23,12 +23,12 @@ def start(request):
 
 def new(request):
     if request.method == 'POST':    
-        form = UserCreationForm(request.POST)
+        form = CaptchaUserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
             return HttpResponseRedirect("/user/%s/"%new_user.username)
     else:
-            form = UserCreationForm()
+            form = CaptchaUserCreationForm()
         
     c={'form':form}
     c.update(csrf(request))

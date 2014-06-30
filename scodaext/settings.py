@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'hvad',
     'south',
     'taggit',
+    'captcha',
     'scodaext.apps.badgeclient',
     'scodaext.apps.simplequiz',
     'scodaext.apps.feedbackform',
@@ -150,3 +151,7 @@ LOGIN_URL = "/user/login/"
 SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',
     }
+
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY', '')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY', '')
+RECAPTCHA_USE_SSL = True

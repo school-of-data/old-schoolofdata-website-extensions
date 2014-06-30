@@ -1,5 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.forms import UserCreationForm
+from captcha.fields import ReCaptchaField
 
 class EditProfileForm(forms.Form):
     first_name = forms.CharField(label=_("Given Name(s)"), max_length = 30, required = False)
@@ -9,4 +11,7 @@ class EditProfileForm(forms.Form):
                                   widget=forms.Textarea, 
                                   required = False)
 
+
+class CaptchaUserCreationForm(UserCreationForm):
+   recaptcha = ReCaptchaField()
 

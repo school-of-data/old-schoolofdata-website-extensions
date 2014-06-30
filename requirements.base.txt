@@ -14,3 +14,4 @@ djangocms-admin-style
 django-reversion
 django-hvad
 django-taggit==0.12
+django-recaptcha==1.0

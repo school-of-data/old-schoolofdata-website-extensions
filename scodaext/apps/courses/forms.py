@@ -1,4 +1,3 @@
-
 from hvad.forms import TranslatableModelForm
 from scodaext.apps.courses.models import *
 
