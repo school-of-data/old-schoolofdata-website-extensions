@@ -21,6 +21,8 @@ urlpatterns = patterns(
         'scodaext.apps.courses.views.createmodule'),
     url(r'^module/(?P<module>[-\w]+)/$',
         'scodaext.apps.courses.views.moduleview'),
+    url(r'^tag/(?P<tag>[-\w:]+)/$',
+        'scodaext.apps.courses.views.tagview'),
     url(r'^(?P<course>[-\w]+)/$', 
         'scodaext.apps.courses.views.courseview'),
     url(r'^(?P<course>[-\w]+)/(?P<module>[-\w]+)/$',

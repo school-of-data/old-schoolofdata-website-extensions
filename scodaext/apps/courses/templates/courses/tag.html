@@ -1,0 +1,19 @@
+{% extends "with-footer.html" %}
+
+{% load md %}
+{% load sekizai_tags %}
+
+{% block base_content %}
+<div class="row-fluid">
+<div class="offset1 span10">
+<h1>Modules tagged with: <i>{{tag}}</i></h1>
+<ul class="modulelist">
+{% for module in modules %}
+<li><a href="../../module/{{module.slug}}">{{module.name}}</a>
+    <p>{{module.description|markdown}}</p>
+    </li>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endblock %}

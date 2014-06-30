@@ -183,3 +183,11 @@ def searchmodule(request):
            "reason":"you did non pass a query"}
     
     return HttpResponse(json.dumps(r), content_type="application/json")
+
+def tagview(request,tag):
+    modules = Module.objects.filter(tags__name__in=[tag])
+
+    c={"modules": modules,
+        "tag": tag}
+    return render_to_response("courses/tag.html", c,
+        context_instance=RequestContext(request))
