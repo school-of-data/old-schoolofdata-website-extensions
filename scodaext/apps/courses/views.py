@@ -8,15 +8,32 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 from django.template.context import RequestContext 
 from django.utils.translation import get_language_from_request
 from django.contrib.auth.decorators import login_required
-from scodaext.apps.courses.forms import *;
-from scodaext.apps.courses.models import *;
+from scodaext.apps.courses.forms import *
+from scodaext.apps.courses.models import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
 
 def start(request):
-    courses = Course.objects.all()
-    data = {"courses": courses}
+    all = request.GET.get('all','0')
+    if all == '0':
+        courses = Course.objects.filter(featured=True)
+    else:
+        courses = Course.objects.all()
+
+    paginator = Paginator(courses,10)
+    
+    page = request.GET.get('page')
+    try:
+        courses = paginator.page(page)
+    except PageNotAnInteger:
+        courses = paginator.page(1)
+    except EmptyPage:
+        courses = paginator.page(paginator.num_pages)
+
+    data = {"courses": courses,
+        "all": all}
     return render_to_response("courses/start.html", data,
         context_instance=RequestContext(request))
 

@@ -10,13 +10,48 @@ Courses
 <div class="row-fluid">
 <div class="offset1 span10">
 <h1>Courses on the School of Data</h1>
+<ul class="nav nav-tabs">    
+        <li {% if all = '0' %}class="active"{% endif %}><a href="?all=0">Featured</a></li>
+        <li {% if all != '0' %}class="active"{% endif %}><a href="?all=1">All</a></li>
+</ul>
 <ul class="courselist">
 {% for c in courses %}
 <li><a href="{{c.slug}}/"><h2>{{c.name}}</h2></a>
     <p>{{c.description|markdown}}</p>
     </li>
 {% endfor %}
-
 </ul>
+{% if contacts.has_other_page %}
+<div class="pagination pagination-centered">
+    <ul>
+        {% if contacts.has_previous %}
+            <li>
+            <a href="?all={{all}}&page={{ contacts.previous_page_number
+}}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled">
+                <span>&laquo</span>
+            </li>
+        {% endif %}
+            
+        {% for p in contacts.paginator.page_range %}
+            <li class="
+                {% if contacts.number = p %}active{% endif %}"
+                <a href="?all={{all}}&page= {{ p }}>{{p}}</a>
+            </li>
+        {% endfor %}
+
+        {% if contacts.has_next %}
+            <li>
+            <a href="?all={{all}}&page={{ contacts.next_page_number
+}}">&raquo;</a></li>
+        {% else %}
+            <li class="disabled">
+                <span>&raquo</span>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
 </div></div>
 {% endblock %}
