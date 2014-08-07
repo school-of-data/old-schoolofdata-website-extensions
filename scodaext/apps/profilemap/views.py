@@ -15,8 +15,10 @@ def map(request):
                 "description": p.description,
                 "location": p.location,
                 "image": p.foto,
+                "status": p.status,
                 "geo": [p.longitude,p.latitude]} 
                     for p in persons]
+
     c = {"persons": json.dumps(persons) }
     return render_to_response("profilemap/map.html", c,
         context_instance=RequestContext(request))

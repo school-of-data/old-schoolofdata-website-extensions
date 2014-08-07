@@ -18,10 +18,54 @@ svg {
 .person {
     opacity: 0.7;
     }
+.person.S {
+    fill: #9999FF;
+    }
+
+.person.F {
+    fill: #FF5555;
+    }
+
+.person.L {
+    fill: #00CC00;
+    }
+
+#image {
+    width: 150px;
+    display: inline-block;
+    }
+#info > div {
+    display: inline-block;
+    }
+
+#location {
+    font-style: italic;
+    font-size: 0.9em;
+    }
+#info {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 300px;
+    background: rgba(255,255,255,0.7);
+    padding: 5px;
+    border-radius: 2px;
+    visibility: hidden;
+    }
 </style>    
 {% endaddtoblock %}
 
 <div id="map">
+</div>
+<div id="info">
+<img id="image" />
+<div>
+<h2 id="name"></h2>
+<span id="location"></span>
+<p id="description">
+</p>
+</div>
+
 </div>
 {% addtoblock "js" %}
 <script src="/static/js/d3.v3.min.js" ></script>
@@ -64,7 +108,15 @@ d3.json("/static/data/countries.topojson", function(error,world) {
         .attr("class",function(d) { return "person "+ d.status})
         .on("click", function(d) {
             console.log(d.name);
+            d3.select("#name").text(d.name);
+            d3.select("#location").text(d.location);
+            d3.select("#image").attr("src",d.image);
+            d3.select("#description").text(d.description);
+            d3.select("#info").attr("style","visibility: visible;");
             })
+     d3.select("#info").on("click", function() {
+        d3.select("#info").attr("style","");
+        })
     })
 </script>
 {% endaddtoblock %}
