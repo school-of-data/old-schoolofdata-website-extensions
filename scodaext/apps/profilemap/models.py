@@ -14,6 +14,12 @@ class Person(models.Model):
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
     foto = models.CharField(max_length=1024)
+    status = models.CharField(max_length=2, choices = (
+        ('S', 'Staff'),
+        ('L', 'Local'),
+        ('F', 'Fellow'),))
+
+
 
     def __unicode__(self):
         return self.name

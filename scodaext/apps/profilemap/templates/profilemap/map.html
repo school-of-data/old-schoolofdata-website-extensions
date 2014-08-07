@@ -5,14 +5,67 @@
 
 {% block "content" %}
 {% addtoblock "css" %}
+<style>
+path.country {
+    fill: #FFF;
+    stroke: #000;
+    stroke-width: 0.5px;
+    stroke-dasharray: 1,2;
+    }
+svg {
+    background: #CCCCFF;
+    }
+.person {
+    opacity: 0.7;
+    }
+</style>    
 {% endaddtoblock %}
 
 <div id="map">
 </div>
 {% addtoblock "js" %}
-<script src="js/d3.v3.min.js" ></script>
-<script src="js/topojson.min.js"></script>
+<script src="/static/js/d3.v3.min.js" ></script>
+<script src="/static/js/topojson.min.js"></script>
 <script>
+var width=window.innerWidth;
+var height=window.innerHeight;
+var svg = d3.select("#map").append("svg")
+    .attr("width",width)
+    .attr("height",height)
+
+var projection = d3.geo.equirectangular()
+    .scale(120)
+    .translate([width /2, height/2])
+    .precision(0.1);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var persons = {{persons|safe}};
+
+d3.json("/static/data/countries.topojson", function(error,world) {
+    console.log(world)
+    svg.selectAll(".country")
+        .data(topojson.feature(world, world.objects.world).features)
+        .enter()
+        .append("path")
+        .attr("d",path)
+        .attr("class",function(d) {return "country "+d.id})
+        .on("click", function(d) {
+            
+            });
+
+    svg.selectAll(".person")
+        .data(persons)
+        .enter()
+        .append("circle")
+        .attr("transform",function(d) { return "translate("+projection(d.geo)+")" })
+        .attr("r",3)
+        .attr("class",function(d) { return "person "+ d.status})
+        .on("click", function(d) {
+            console.log(d.name);
+            })
+    })
 </script>
 {% endaddtoblock %}
 {% endblock %}
