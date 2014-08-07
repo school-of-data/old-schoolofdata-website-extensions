@@ -6,21 +6,25 @@ from django.dispatch import receiver
 
 # Create your models here.
 
-@receiver(pre_save, sender=Person)
-def geocode(sender, instance=None, **kwargs):
-    instance.geocode()
 
-Person(models.Model):
+class Person(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     location = models.CharField(max_length=255)
-    geo = models.CharField(max_field=500,null=True,blank=True)
-    foto = models.CharField(max_lenght=1024)
+    latitude = models.FloatField(null=True,blank=True)
+    longitude = models.FloatField(null=True,blank=True)
+    foto = models.CharField(max_length=1024)
 
     def __unicode__(self):
         return self.name
 
     def geocode(self):  
-        if not self.geo:
+        if not self.latitude:
             r = Geocoder.geocode(self.location)
-            self.geo = str(r[0].coordinates)
+            (self.latitude,self.longitude) = r[0].coordinates
+
+
+
+@receiver(pre_save, sender=Person)
+def geocode(sender, instance=None, **kwargs):
+    instance.geocode()

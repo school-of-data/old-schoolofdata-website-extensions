@@ -1,0 +1,18 @@
+{% extends "iframe.html" %}
+
+{% load md %}
+{% load sekizai_tags %}
+
+{% block "content" %}
+{% addtoblock "css" %}
+{% endaddtoblock %}
+
+<div id="map">
+</div>
+{% addtoblock "js" %}
+<script src="js/d3.v3.min.js" ></script>
+<script src="js/topojson.min.js"></script>
+<script>
+</script>
+{% endaddtoblock %}
+{% endblock %}
