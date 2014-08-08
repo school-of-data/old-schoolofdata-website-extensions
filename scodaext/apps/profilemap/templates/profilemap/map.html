@@ -8,12 +8,10 @@
 <style>
 path.country {
     fill: #FFF;
-    stroke: #000;
-    stroke-width: 0.5px;
-    stroke-dasharray: 1,2;
+    stroke: #CCC;
     }
 svg {
-    background: #CCCCFF;
+    background: #0db1db;
     }
 .person {
     opacity: 0.7;
@@ -30,41 +28,51 @@ svg {
     fill: #00CC00;
     }
 
-#image {
+.profile > img {
     width: 150px;
     display: inline-block;
     }
-#info > div {
+.profile > div {
     display: inline-block;
     width: 150px;
     }
 
-#location {
+.profile > div > span {
     font-style: italic;
     font-size: 0.9em;
     }
+
+.profile > div > h2 {
+    margin: 0px;
+    }
+
 #info {
     position: absolute;
     top: 5px;
     left: 5px;
-    width: 310px;
     background: rgba(255,255,255,0.7);
     padding: 5px;
     border-radius: 2px;
     visibility: hidden;
     }
+
+#close {
+    width: 100%;
+    text-align: right;
+    }
+
+.profile {
+    width: 305px;
+    display: inline-block;
+    }
+
 </style>    
 {% endaddtoblock %}
 
 <div id="map">
 </div>
 <div id="info">
-<img id="image" />
-<div>
-<h2 id="name"></h2>
-<span id="location"></span>
-<p id="description">
-</p>
+<div id="close"><i class="icon-remove-circle"></i></div>
 </div>
 
 </div>
@@ -100,22 +108,47 @@ d3.json("/static/data/countries.topojson", function(error,world) {
             
             });
 
+    var add_profile = function(d) {
+        
+        }
+
     svg.selectAll(".person")
         .data(persons)
         .enter()
         .append("circle")
         .attr("transform",function(d) { return "translate("+projection(d.geo)+")" })
-        .attr("r",3)
+        .attr("r",4)
         .attr("class",function(d) { return "person "+ d.status})
         .on("click", function(d) {
-            console.log(d.name);
-            d3.select("#name").text(d.name);
-            d3.select("#location").text(d.location);
-            d3.select("#image").attr("src",d.image);
-            d3.select("#description").text(d.description);
-            d3.select("#info").attr("style","visibility: visible;");
+            list=persons.filter(function(x) {
+                return x.geo[0] == d.geo[0] && x.geo[1]==d.geo[1] });
+            console.log(list);
+            var i = d3.select("#info")
+            i.selectAll(".profile")
+                .remove();
+            var infop = i.selectAll(".profile")
+                .data(list)
+                .enter()
+                .append("div")
+                .attr("class","profile")
+            
+            infop.append("img")
+                .attr("src",function(d) { return d.image })
+
+            infop = infop.append("div")
+
+            infop.append("h2")
+                .text(function(d) { return d.name });
+
+            infop.append("span")
+                .text(function(d) { return d.location });
+
+            infop.append("p")
+                .text(function(d) { return d.description });
+
+            i.attr("style","visibility: visible;");
             })
-     d3.select("#info").on("click", function() {
+     d3.select("#close i").on("click", function() {
         d3.select("#info").attr("style","");
         })
     })
