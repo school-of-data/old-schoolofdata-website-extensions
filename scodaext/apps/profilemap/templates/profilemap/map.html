@@ -46,7 +46,7 @@ svg {
     margin: 0px;
     }
 
-html {
+html,body {
     padding: 0;
     margin: 0;
     }
@@ -92,7 +92,7 @@ var svg = d3.select("#map").append("svg")
     .attr("height",height-10)
 
 var projection = d3.geo.equirectangular()
-    .scale(120)
+    .scale(130)
     .translate([width /2, height/2])
     .precision(0.1);
 
