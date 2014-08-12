@@ -7,14 +7,17 @@
 {% addtoblock "css" %}
 <style>
 path.country {
-    fill: #FFF;
+    fill: #F2DACE;
     stroke: #CCC;
     }
 svg {
-    background: #0db1db;
+    background: transparent;
     }
 .person {
     opacity: 0.7;
+    }
+.person:hover {
+    stroke: #000;
     }
 .person.S {
     fill: #9999FF;
@@ -57,7 +60,7 @@ html,body {
     position: absolute;
     top: 5px;
     left: 5px;
-    background: rgba(255,255,255,0.7);
+    background: rgba(242,218,206,0.7);
     padding: 5px;
     border-radius: 2px;
     visibility: hidden;
